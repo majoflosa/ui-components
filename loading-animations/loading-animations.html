@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loading Animations - UI Components</title>
+    <link rel="stylesheet" href="loading-animations.css">
+</head>
+<body>
+    <nav><a href="/ui-components/"></a></nav>
+    <div class="loading-screen">
+        <!-- = = = = = = = = = = = = Basic spinner = = = = = = = = = = = = -->
+        <div id="spinner-1-dot">
+            <span class="dot dot-1"></span>
+        </div>
+
+        <!-- = = = = = = = = = = = = Momentum Dots spinner = = = = = = = = = = = = -->
+        <div id="spinner-momentum">
+            <div class="spinner spinner-1"><span class="dot"></span></div><div class="spinner spinner-2"><span class="dot"></span></div><div class="spinner spinner-3"><span class="dot"></span></div><div class="spinner spinner-4"><span class="dot"></span></div><div class="spinner spinner-5"><span class="dot"></span></div>
+        </div>
+        
+        <!-- = = = = = = = = = = = = Alternating spinner = = = = = = = = = = = = -->
+        <div id="spinner-3-dots">
+            <span class="dot dot-1"></span>
+            <span class="dot dot-2"></span>
+            <span class="dot dot-3"></span>
+        </div>
+
+
+        <!-- = = = = = = = = = = = = Jumping Dots = = = = = = = = = = = = -->
+        <div id="jumper-dots">
+            <span class="jumper-dot jumper-dot-1"></span>
+            <span class="jumper-dot jumper-dot-2"></span>
+            <span class="jumper-dot jumper-dot-3"></span>
+        </div>
+
+        
+        <!-- = = = = = = = = = = = = Rising Bars = = = = = = = = = = = = -->
+        <div id="bars">
+            <!-- 
+                NOTE: Breaking each span into separate lines will make browsers render one &nbsp; character, 
+                creating greater distance between bars than intended. Keep in one line unless you're ok
+                with the extra space between bars.
+            -->
+            <span class="bar bar-1"></span><span class="bar bar-2"></span><span class="bar bar-3"></span>
+        </div>
+
+
+        <!-- = = = = = = = = = = = = Pendulum = = = = = = = = = = = = -->
+        <div id="pendulum">
+            <span class="string"></span>
+            <span class="dot dot-1"></span>
+        </div>
+
+        <!-- = = = = = = = = = = = = Glaring bar = = = = = = = = = = = = -->
+        <div id="glare-bar">
+            <div class="glare glare-1"></div>
+            <div class="glare glare-2"></div>
+        </div>
+        
+        <!-- = = = = = = = = = = = = Glaring bar with ending = = = = = = = = = = = = -->
+        <div id="glare-bar-ending">
+            <div class="glare glare-1"></div>
+            <div class="glare glare-2"></div>
+        </div>
+    </div>
+
+    <script src="loading-animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  color: #dddddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #loading-screen .loading-message {
+    margin: 0 auto;
+    transition: all 1.25s ease-in-out;
+    -webkit-transition: all 1.25s ease-in-out;
+    -moz-transition: all 1.25s ease-in-out;
+    -ms-transition: all 1.25s ease-in-out;
+    -o-transition: all 1.25s ease-in-out; }
+  #loading-screen.fulfilled {
+    overflow: hidden;
+    animation-name: fadeOut;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 1s; }
+    #loading-screen.fulfilled .loading-message {
+      opacity: 0; }
+    #loading-screen.fulfilled .glare-bars {
+      animation-name: pageLoaded;
+      animation-duration: 1.25s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards; }
+
+.glare-bars {
+  margin: 30px auto;
+  width: 150px;
+  height: 6px;
+  border-radius: 3px;
+  background: #e5e5e5;
+  position: relative;
+  overflow: hidden; }
+  .glare-bars .glare {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right, transparent, #fafafa, transparent);
+    animation-name: glareSlide;
+    animation-duration: 2.75s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out; }
+  .glare-bars .glare-2 {
+    animation-delay: 0.5s; }
+
+@keyframes glareSlide {
+  0% {
+    left: -50%; }
+  25% {
+    left: 100%; }
+  100% {
+    left: 100%; } }
+@keyframes pageLoaded {
+  0% {
+    height: 6px;
+    width: 150px;
+    opacity: 1; }
+  70% {
+    height: 0px;
+    width: 70%;
+    opacity: 0; }
+  100% {
+    height: 0px;
+    width: 70%;
+    opacity: 0; } }
+@keyframes fadeOut {
+  0% {
+    height: 100vh;
+    opacity: 1; }
+  90% {
+    height: 100vh;
+    opacity: 0; }
+  100% {
+    height: 0;
+    opacity: 0; } }
+/* These styles are for content outside the main component, not for the component itself */
+body {
+  color: #555555;
+  font-family: sans-serif;
+  margin: 0; }
+
+.wrap {
+  width: 90%;
+  max-width: 900px;
+  margin: 50px auto; }
+
+/*# sourceMappingURL=loading-screen.css.map */
