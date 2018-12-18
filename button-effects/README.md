@@ -1,3 +1,3 @@
 # Button Hover Effects
 
-A collection of different button animations
+A collection of different button hover animations

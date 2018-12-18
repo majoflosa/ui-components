@@ -41,7 +41,6 @@ $btnThemeBorder: 2px solid $btnThemeColor
         position: relative
         span
             position: relative
-
         &::before
             display: block
             content: " "
@@ -65,7 +64,6 @@ $btnThemeBorder: 2px solid $btnThemeColor
         position: relative
         span
             position: relative
-
         &::before
             display: block
             content: " "
@@ -89,7 +87,6 @@ $btnThemeBorder: 2px solid $btnThemeColor
         position: relative
         span
             position: relative
-
         &::before
             display: block
             content: " "
@@ -114,7 +111,6 @@ $btnThemeBorder: 2px solid $btnThemeColor
         position: relative
         span
             position: relative
-
         &::before
             display: block
             content: " "
@@ -138,7 +134,6 @@ $btnThemeBorder: 2px solid $btnThemeColor
         position: relative
         span
             position: relative
-
         &::before
             display: block
             content: " "
@@ -162,7 +157,6 @@ $btnThemeBorder: 2px solid $btnThemeColor
         position: relative
         span
             position: relative
-
         &::before
             display: block
             content: " "
@@ -180,6 +174,100 @@ $btnThemeBorder: 2px solid $btnThemeColor
                 right: 0
                 width: 100%
 
+    &.border-bottom-from-left
+        background: transparent
+        color: $btnThemeColor
+        border: none
+        border-bottom: 2px solid lighten($btnThemeColor, 50%)
+        position: relative
+        span
+            position: relative
+        &::before
+            display: block
+            content: " "
+            position: absolute
+            top: 0
+            left: 0
+            width: 0
+            height: 100%
+            border-bottom: 2px solid $btnThemeColor
+            +basicTransition
+        
+        &:hover
+            &::before
+                width: 100%
+    
+    &.border-top-from-left
+        background: transparent
+        color: $btnThemeColor
+        border: none
+        border-top: 2px solid lighten($btnThemeColor, 50%)
+        position: relative
+        span
+            position: relative
+        &::before
+            display: block
+            content: " "
+            position: absolute
+            bottom: 0
+            left: 0
+            width: 0
+            height: 100%
+            border-top: 2px solid $btnThemeColor
+            +basicTransition
+        
+        &:hover
+            &::before
+                width: 100%
+    
+    &.border-bottom-from-center
+        background: transparent
+        color: $btnThemeColor
+        border: none
+        border-bottom: 2px solid lighten($btnThemeColor, 50%)
+        position: relative
+        span
+            position: relative
+        &::before
+            display: block
+            content: " "
+            position: absolute
+            top: 0
+            left: 50%
+            width: 0
+            height: 100%
+            border-bottom: 2px solid $btnThemeColor
+            +basicTransition
+        
+        &:hover
+            &::before
+                left: 0
+                width: 100%
+    
+    &.border-top-from-center
+        background: transparent
+        color: $btnThemeColor
+        border: none
+        border-top: 2px solid lighten($btnThemeColor, 50%)
+        position: relative
+        span
+            position: relative
+        &::before
+            display: block
+            content: " "
+            position: absolute
+            bottom: 0
+            left: 50%
+            width: 0
+            height: 100%
+            border-top: 2px solid $btnThemeColor
+            +basicTransition
+        
+        &:hover
+            &::before
+                left: 0
+                width: 100%
+
 
 /* General styles for demo page, not related to components */
 body
@@ -194,6 +282,11 @@ body
     padding: 50px 0
 
 section
-    margin: 0 0 20px
-
+    margin: 10px 1%
+    width: 47%
+    display: inline-block
+    vertical-align: top
+    box-sizing: border-box
+    padding: 15px
+    border: 2px dashed #eeeeee
     

@@ -213,6 +213,120 @@
   right: 0;
   width: 100%;
 }
+.btn.border-bottom-from-left, a.btn.border-bottom-from-left {
+  background: transparent;
+  color: #555555;
+  border: none;
+  border-bottom: 2px solid #d5d5d5;
+  position: relative;
+}
+.btn.border-bottom-from-left span, a.btn.border-bottom-from-left span {
+  position: relative;
+}
+.btn.border-bottom-from-left::before, a.btn.border-bottom-from-left::before {
+  display: block;
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-bottom: 2px solid #555555;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+}
+.btn.border-bottom-from-left:hover::before, a.btn.border-bottom-from-left:hover::before {
+  width: 100%;
+}
+.btn.border-top-from-left, a.btn.border-top-from-left {
+  background: transparent;
+  color: #555555;
+  border: none;
+  border-top: 2px solid #d5d5d5;
+  position: relative;
+}
+.btn.border-top-from-left span, a.btn.border-top-from-left span {
+  position: relative;
+}
+.btn.border-top-from-left::before, a.btn.border-top-from-left::before {
+  display: block;
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-top: 2px solid #555555;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+}
+.btn.border-top-from-left:hover::before, a.btn.border-top-from-left:hover::before {
+  width: 100%;
+}
+.btn.border-bottom-from-center, a.btn.border-bottom-from-center {
+  background: transparent;
+  color: #555555;
+  border: none;
+  border-bottom: 2px solid #d5d5d5;
+  position: relative;
+}
+.btn.border-bottom-from-center span, a.btn.border-bottom-from-center span {
+  position: relative;
+}
+.btn.border-bottom-from-center::before, a.btn.border-bottom-from-center::before {
+  display: block;
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  border-bottom: 2px solid #555555;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+}
+.btn.border-bottom-from-center:hover::before, a.btn.border-bottom-from-center:hover::before {
+  left: 0;
+  width: 100%;
+}
+.btn.border-top-from-center, a.btn.border-top-from-center {
+  background: transparent;
+  color: #555555;
+  border: none;
+  border-top: 2px solid #d5d5d5;
+  position: relative;
+}
+.btn.border-top-from-center span, a.btn.border-top-from-center span {
+  position: relative;
+}
+.btn.border-top-from-center::before, a.btn.border-top-from-center::before {
+  display: block;
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  border-top: 2px solid #555555;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+}
+.btn.border-top-from-center:hover::before, a.btn.border-top-from-center:hover::before {
+  left: 0;
+  width: 100%;
+}
 
 /* General styles for demo page, not related to components */
 body {
@@ -229,7 +343,13 @@ body {
 }
 
 section {
-  margin: 0 0 20px;
+  margin: 10px 1%;
+  width: 47%;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 15px;
+  border: 2px dashed #eeeeee;
 }
 
 /*# sourceMappingURL=button-effects.css.map */
