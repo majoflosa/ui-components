@@ -2,4 +2,4 @@
 
 A hero banner component with vertical parallax effect on background image.
 
-[See live demo](http://ui.maurojflores.com/components/basic-plx/)
+[See live demo](http://ui.maurojflores.com/ui-components/basic-plx/basic-plx.html)

@@ -2,19 +2,21 @@
 
 A collection of small, re-usable components of common web UI features.
 
-* **Loading Animations** - [Live demo](http://ui.maurojflores.com/components/loading-animations/)
-* **Loading Screen** - [Live demo](http://ui.maurojflores.com/components/loading-screen/)
+* **Loading Animations** - [Live demo](http://ui.maurojflores.com/ui-components/loading-animations/loading-animations.html)
+* **Loading Screen** - [Live demo](http://ui.maurojflores.com/ui-components/loading-screen/loading-screen.html)
 
-* **Hero Banner** - [Live demo](http://ui.maurojflores.com/components/banner/)
+* **Button effects** - [Live demo](http://ui.maurojflores.com/ui-components/button-effects/button-effects.html)
 
-* **Basic Parallax** - [Live demo](http://ui.maurojflores.com/components/basic-plx/)
-* **Layered Parallax** - [Live demo](http://ui.maurojflores.com/components/layered-plx/)
-* **Multiple Parallax Sections** - [Live demo](http://ui.maurojflores.com/components/multiple-plx/)
-* **Parallax on Mouse Movement** - [Live demo](http://ui.maurojflores.com/components/hover-plx/)
+* **Hero Banner** - [Live demo](http://ui.maurojflores.com/ui-components/banner/banner.html)
 
-* **Fade In Content on Scroll** - [Live demo](http://ui.maurojflores.com/components/fade-in/)
-* **Successively Fade In Content on Scroll** - [Live demo](http://ui.maurojflores.com/components/fade-in-multiple/)
+* **Basic Parallax** - [Live demo](http://ui.maurojflores.com/ui-components/basic-plx/basic-plx.html)
+* **Layered Parallax** - [Live demo](http://ui.maurojflores.com/ui-components/layered-plx/layered-plx.html)
+* **Multiple Parallax Sections** - [Live demo](http://ui.maurojflores.com/ui-components/multiple-plx/multiple-plx.html)
+* **Parallax on Mouse Movement** - [Live demo](http://ui.maurojflores.com/ui-components/hover-plx/hover-plx.html)
 
-* **Page with Scrollspy Menu** - [Live demo](http://ui.maurojflores.com/components/scrollspy/)
+* **Fade In Content on Scroll** - [Live demo](http://ui.maurojflores.com/ui-components/fade-in-onscroll/fade-in-onscroll.html)
+* **Successively Fade In Content on Scroll** - [Live demo](http://ui.maurojflores.com/ui-components/fade-in-onscroll-multiple/fade-in-onscroll-multiple.html)
 
-* **Page with Sticky Navigation Bar** - [Live demo](http://ui.maurojflores.com/components/sticky-nav/)
+* **Page with Scrollspy Menu** - [Live demo](http://ui.maurojflores.com/ui-components/scrollspy/scrollspy.html)
+
+* **Page with Sticky Navigation Bar** - [Live demo](http://ui.maurojflores.com/ui-components/sticky-nav/sticky-nav.html)

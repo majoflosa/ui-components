@@ -6,4 +6,4 @@ Markup and styles for a simple hero banner section to use on splash pages or pro
 * **Background overlay on banner content:** add a surrounding background on the banner's inner content by adding a `content-background-overlay` class on the `hero-banner__content` `div`.
 * **Overlay on main background image:** add or remove the `no-overlay` class on the `hero-banner` to enable or disable a transparent layer over the main background image/color.
 
-[See live demo](http://ui.maurojflores.com/components/banner/)
+[See live demo](http://ui.maurojflores.com/ui-components/banner/banner.html)
