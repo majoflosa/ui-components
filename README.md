@@ -20,3 +20,5 @@ A collection of small, re-usable components of common web UI features.
 * **Page with Scrollspy Menu** - [Live demo](http://ui.maurojflores.com/ui-components/scrollspy/scrollspy.html)
 
 * **Page with Sticky Navigation Bar** - [Live demo](http://ui.maurojflores.com/ui-components/sticky-nav/sticky-nav.html)
+
+* **Slide-in Side Menu** - [Live demo](http://ui.maurojflores.com/ui-components/side-menu/side-menu.html)

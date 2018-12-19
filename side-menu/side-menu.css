@@ -8,9 +8,16 @@
   -moz-transition: all 0.25s ease-in-out;
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
+  /* customize styles for #menu-button in your project */
 }
 #menu-wrap #menu-button {
   position: fixed;
+  top: 25px;
+  left: 15px;
+  padding: 8px 12px;
+  background: #ffffff;
+  color: #555555;
+  text-transform: uppercase;
 }
 #menu-wrap #main-menu {
   background: #555555;
@@ -18,6 +25,7 @@
   display: inline-block;
   padding: 30px;
   height: 100%;
+  margin-left: -100%;
   transition: all 0.25s ease-in-out;
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
@@ -40,11 +48,13 @@
   margin-left: 0 !important;
 }
 
+/* General styles, not relevant to this component */
 body {
   margin: 0;
   font-family: sans-serif;
   font-size: 1.1em;
   line-height: 1.3;
+  color: #555555;
 }
 
 .wrap {
