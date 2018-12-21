@@ -22,6 +22,26 @@
   color: #ffffff;
 }
 
+.menu-button {
+  /* Customize your menu button */
+  display: none;
+  padding: 8px 12px;
+  background: #ffffff;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 960px) {
+  .menu-button {
+    display: inline-block;
+  }
+
+  .nav-links {
+    display: none;
+  }
+  .nav-links.open {
+    display: block;
+  }
+}
 .section {
   background: #ffffff;
 }
@@ -31,6 +51,7 @@
 
 .section-content {
   padding: 50px;
+  box-sizing: border-box;
   margin: 0 auto;
   width: 90%;
   max-width: 900px;
