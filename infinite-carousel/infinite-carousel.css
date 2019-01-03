@@ -1,0 +1,64 @@
+.carousel-list {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-inner-list {
+  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: initial;
+  flex-direction: initial;
+}
+
+.carousel-item {
+  flex: 0 0 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: initial;
+  box-sizing: border-box;
+  padding: 20px;
+  background: #dddddd;
+  border: 5px solid #ffffff;
+}
+.carousel-item img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .carousel-list {
+    width: 600px;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 600px) {
+  .carousel-list {
+    width: 350px;
+  }
+
+  .carousel-item {
+    flex: 0 0 175px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .carousel-list {
+    display: block;
+  }
+
+  .carousel-item {
+    display: block;
+  }
+}
+/* These styles are for the demo only; they are not related to the component */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #555555;
+}
+
+/*# sourceMappingURL=infinite-carousel.css.map */
