@@ -1,6 +1,10 @@
 # UI Components
 
-A collection of small, re-usable components of common web UI features.
+An open source repository of HTML, Sass & CSS, and JavaScript (ES6) components and/or example code for commonly used UI features, such as loading animations, hero banners, different parallax effect implementations, hover effects for buttons, and much more. 
+
+Each component is a small collection of files - html, sass, css, and js on some - which can be used independently of other code and customized to fit seamlessly into an existing code base. They are meant to provide developers with a minimal foundation of code, so they can further style and accommodate to their own projects.
+
+It is ongoing, and new components are added periodically, as well as code revisions for those previously added.
 
 * **Loading Animations** - [Live demo](http://ui.maurojflores.com/ui-components/loading-animations/loading-animations.html)
 * **Loading Screen** - [Live demo](http://ui.maurojflores.com/ui-components/loading-screen/loading-screen.html)
@@ -22,3 +26,5 @@ A collection of small, re-usable components of common web UI features.
 * **Page with Sticky Navigation Bar** - [Live demo](http://ui.maurojflores.com/ui-components/sticky-nav/sticky-nav.html)
 
 * **Slide-in Side Menu** - [Live demo](http://ui.maurojflores.com/ui-components/side-menu/side-menu.html)
+
+* **Infinite Carousel** - [Live demo](http://ui.maurojflores.com/ui-components/infinite-carousel/infinite-carousel.html)
