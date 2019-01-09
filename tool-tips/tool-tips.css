@@ -1,0 +1,45 @@
+.tool-tip-toggle {
+  color: #5555dd;
+  cursor: pointer;
+  position: relative;
+}
+
+.tool-tip {
+  background: #dddddd;
+  color: #555555;
+  display: inline-block;
+  padding: 5px 10px;
+  position: absolute;
+}
+.tool-tip.top {
+  top: -200%;
+  transform-origin: center;
+}
+.tool-tip.top::after {
+  display: block;
+  content: " ";
+  border: 10px solid transparent;
+  border-top: 10px solid #dddddd;
+  width: 0;
+  position: absolute;
+  left: 47.5%;
+  bottom: -19px;
+}
+
+/*  */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #555555;
+}
+
+.wrap {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.wrap section {
+  padding: 15px 0;
+}
+
+/*# sourceMappingURL=tool-tips.css.map */
