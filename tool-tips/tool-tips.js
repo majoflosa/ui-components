@@ -22,10 +22,10 @@ class Tooltip {
     bindEvents() {
         this.$togglers.forEach( toggler => {
             if ( this.toggleBy === 'hover' ) {
-                toggler.addEventListener( 'mouseenter', this.show );
-                toggler.addEventListener( 'mouseout', this.hide );
+                toggler.addEventListener( 'mouseenter', event => this.show( event.target ) );
+                toggler.addEventListener( 'mouseout', event => this.hide( event.target ) );
             } else {
-                toggler.addEventListener( 'click', this.toggle );
+                toggler.addEventListener( 'click', event => this.toggle( event.target ) );
             }
         });
     }
@@ -35,26 +35,32 @@ class Tooltip {
         $tooltip.className = this.tooltipClass + ' ' + toggler.dataset.ttPosition;
         $tooltip.innerText = toggler.dataset.ttText;
         
-        // toggler.appendChild( $tooltip );
-        toggler.parentElement.insertBefore( $tooltip, toggler );
         toggler.parentElement.style.position = 'relative';
-        // $tooltip.style[toggler.dataset.ttPosition] = - $tooltip.offsetHeight + 'px';
-        if ( toggler.dataset.ttPosition === 'top' ) {
-            let shift = (-$tooltip.offsetWidth/2) + (toggler.offsetWidth/2);
-            $tooltip.style.transform = `translateX(${shift}px)`;
-        }
-    }
-
-    toggle() {
+        toggler.parentElement.insertBefore( $tooltip, toggler );
         
+        if ( ['top', 'bottom'].includes( toggler.dataset.ttPosition) ) {
+            const shift = (-$tooltip.offsetWidth/2) + (toggler.offsetWidth/2);
+            $tooltip.style.transform = `translateX(${shift}px)`;
+        } else if ( ['left', 'right'].includes(toggler.dataset.ttPosition) ) {
+            const shift = toggler.dataset.ttPosition === 'left' 
+            ? -$tooltip.offsetWidth - 15 
+            : toggler.offsetWidth + 15;
+            $tooltip.style.transform = `translate(${shift}px, ${-toggler.offsetHeight/2}px)`;
+        }
+        $tooltip.style.display = 'none';
     }
 
-    show() {
-
+    toggle( toggler ) {
+        const $tooltip = toggler.parentElement.querySelector( `.${this.tooltipClass}` );
+        $tooltip.style.display = $tooltip.style.display === 'none' ? 'inline-block' : 'none';
     }
 
-    hide() {
+    show( toggler ) {
+        toggler.parentElement.querySelector( `.${this.tooltipClass}` ).style.display = 'inline-block';
+    }
 
+    hide( toggler ) {
+        toggler.parentElement.querySelector( `.${this.tooltipClass}` ).style.display = 'none';
     }
 }
 
