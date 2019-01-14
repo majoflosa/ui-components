@@ -27,6 +27,7 @@ It is ongoing, and new components are added periodically, as well as code revisi
 
 * **Slide-in Side Menu** - [Live demo](http://ui.maurojflores.com/ui-components/side-menu/side-menu.html)
 
+* **Carousel Gallery** - [Live demo](http://ui.maurojflores.com/ui-components/carousel-gallery/carousel-gallery.html)
 * **Infinite Carousel** - [Live demo](http://ui.maurojflores.com/ui-components/infinite-carousel/infinite-carousel.html)
 
 * **Tooltip** - [Live demo](http://ui.maurojflores.com/ui-components/tool-tips/tool-tips.html)

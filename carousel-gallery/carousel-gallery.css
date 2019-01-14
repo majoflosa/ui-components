@@ -1,0 +1,67 @@
+.carousel-list-outer {
+  overflow: hidden;
+  position: relative;
+  max-width: 100%;
+}
+.carousel-list-outer .carousel-bullets {
+  text-align: center;
+  margin: 15px auto 0;
+}
+.carousel-list-outer .carousel-bullets .carousel-bullet {
+  display: inline-block;
+  vertical-align: middle;
+  background: #dddddd;
+  border-radius: 99px;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  cursor: pointer;
+}
+.carousel-list-outer .carousel-bullets .carousel-bullet.selected-bullet {
+  background: #888888;
+  width: 13px;
+  height: 13px;
+}
+
+.carousel-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+
+.carousel-item {
+  box-sizing: border-box;
+  padding: 15px;
+  background: #f5f5f5;
+  margin: 1%;
+  flex: 0 0 31%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 960px) {
+  .carousel-item {
+    flex: 0 0 48%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .carousel-item {
+    flex: 0 0 98%;
+  }
+}
+/* These styles are for the demo only, not related to the component */
+body {
+  margin: 0;
+  color: #555555;
+  font-family: sans-serif;
+}
+
+.wrap {
+  margin: 50px auto;
+  width: 90%;
+  max-width: 900px;
+}
+
+/*# sourceMappingURL=carousel-gallery.css.map */
