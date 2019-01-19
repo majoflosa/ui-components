@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animated Progress Ring</title>
+    <link rel="stylesheet" href="progress-ring.css">
+</head>
+<body>
+    <nav><a href="../">Back to UI Components Menu</a></nav>
+    
+    <div class="wrap">
+    
+    <div class="rings-wrap">
+        <div class="ring-wrap">
+            <svg width="150" height="150">
+                <circle class="background-ring bg-ring-1" stroke="#ffeeee" stroke-width="30" fill="transparent" r="60" cx="75" cy="75"/>
+            </svg>
+        </div>
+        <div class="ring-wrap">
+            <svg class="progress-ring p-ring-1" width="150" height="150">
+                <circle class="progress-ring-path-1" stroke="#ff0000" stroke-width="30" fill="transparent" r="60" cx="75" cy="75"/>
+            </svg>
+        </div>
+        <div class="number number-1"></div>
+    </div>
+
+    <div class="rings-wrap">
+        <div class="ring-wrap">
+            <svg width="150" height="150">
+                <circle class="background-ring bg-ring-2" stroke="#ffeeee" stroke-width="30" fill="transparent" r="60" cx="75" cy="75"/>
+            </svg>
+        </div>
+        <div class="ring-wrap">
+            <svg class="progress-ring p-ring-2" width="150" height="150">
+                <circle class="progress-ring-path-2" stroke="#ff0000" stroke-width="30" fill="transparent" r="60" cx="75" cy="75"/>
+            </svg>
+        </div>
+        <div class="number number-2"></div>
+    </div>
+    
+    <div class="rings-wrap">
+        <div class="ring-wrap">
+            <svg width="150" height="150">
+                <circle class="background-ring bg-ring-3" stroke="#ffeeee" stroke-width="30" fill="transparent" r="60" cx="75" cy="75"/>
+            </svg>
+        </div>
+        <div class="ring-wrap">
+            <svg class="progress-ring p-ring-3" width="150" height="150">
+                <circle class="progress-ring-path-3" stroke="#ff0000" stroke-width="30" fill="transparent" r="60" cx="75" cy="75"/>
+            </svg>
+        </div>
+        <div class="number number-3"></div>
+    </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="progress-ring.js"></script>
+</body>
+</html>

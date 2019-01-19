@@ -9,6 +9,8 @@ It is ongoing, and new components are added periodically, as well as code revisi
 * **Loading Animations** - [Live demo](http://ui.maurojflores.com/ui-components/loading-animations/loading-animations.html)
 * **Loading Screen** - [Live demo](http://ui.maurojflores.com/ui-components/loading-screen/loading-screen.html)
 
+* **Animated Progress Ring** - [Live demo](http://ui.maurojflores.com/ui-components/progress-ring/progress-ring.html)
+
 * **Button effects** - [Live demo](http://ui.maurojflores.com/ui-components/button-effects/button-effects.html)
 
 * **Hero Banner** - [Live demo](http://ui.maurojflores.com/ui-components/banner/banner.html)
@@ -31,3 +33,4 @@ It is ongoing, and new components are added periodically, as well as code revisi
 * **Infinite Carousel** - [Live demo](http://ui.maurojflores.com/ui-components/infinite-carousel/infinite-carousel.html)
 
 * **Tooltip** - [Live demo](http://ui.maurojflores.com/ui-components/tool-tips/tool-tips.html)
+

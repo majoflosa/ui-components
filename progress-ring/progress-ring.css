@@ -1,0 +1,45 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  margin: 75px auto;
+  width: 90%;
+  max-width: 900px;
+}
+
+.progress-ring circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke: #888888;
+}
+
+.background-ring {
+  stroke: #e5e5e5;
+}
+
+.rings-wrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.ring-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.number {
+  color: #888888;
+  font-size: 25px;
+  font-family: sans-serif;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=progress-ring.css.map */
