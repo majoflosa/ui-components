@@ -1,0 +1,81 @@
+.modal
+    overflow: hidden
+    position: fixed
+    top: 0
+    left: 0
+    overflow: scroll
+    box-sizing: border-box
+    background: rgba(0,0,0,0.7)
+    display: flex
+    justify-content: center
+    align-items: center
+    z-index: 9
+    height: 0
+    width: 0
+    
+    &.hidden
+        animation: fadeOutModal 0.5s ease-in-out 1 forwards
+    
+    &.showing
+        width: 100%
+        height: 100%
+        animation: fadeInModal 0.3s ease-in-out 1 forwards
+
+    &-inner
+        width: 90%
+        max-width: 600px
+        margin: 0 auto
+        padding: 20px
+        box-sizing: border-box
+        background: #ffffff
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1)
+        position: relative
+
+    &-close, a.modal-close
+        position: absolute
+        top: 10px
+        right: 10px
+        &:hover
+            background: #888888
+            color: #ffffff
+            text-decoration: none
+
+    &-buttons
+        button
+            margin-bottom: 5px
+
+
+@keyframes fadeInModal
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+@keyframes fadeOutModal
+    0%
+        opacity: 1
+        height: 100%
+        width: 100%
+    50%
+        height: 100%
+        width: 100%
+        opacity: 0
+    100%
+        height: 0
+        width: 0
+        opacity: 0
+
+
+body
+    color: #555555
+    margin: 0
+    font-family: sans-serif
+
+#trigger
+    display: inline-block
+    margin: 30px
+    padding: 20px 30px
+    background: #dddddd
+    color: #555555
+    text-transform: uppercase
+    text-decoration: none

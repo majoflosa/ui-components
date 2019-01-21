@@ -34,3 +34,5 @@ It is ongoing, and new components are added periodically, as well as code revisi
 
 * **Tooltip** - [Live demo](http://ui.maurojflores.com/ui-components/tool-tips/tool-tips.html)
 
+* **Modal Box** - [Live demo](http://ui.maurojflores.com/ui-components/modal-box/modal-box.html)
+
