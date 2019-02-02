@@ -5,6 +5,7 @@
   align-items: center;
   flex-direction: column;
   min-height: 500px;
+  background: #fafafa;
 }
 .hero-banner.no-overlay .background-overlay {
   display: none;
