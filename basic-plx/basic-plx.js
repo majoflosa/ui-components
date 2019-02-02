@@ -9,10 +9,29 @@ window.addEventListener('load', () => {
          * @param { number } scrollRatio proportion of how much background image shifts on scroll
          */
         constructor( options ) {
-            // the element that wraps content and parallaxed background
+            // the element that wraps content and parallax background
             this.$banner = document.querySelector( options.bannerSelector );
+            // abort everything if there is no banner
+            if ( !this.$banner ) {
+                console.warn(`The query selector ${options.bannerSelector} did not match any elements on the document. Aborting parallax function.`);
+                return false;
+            }
+
             // the element containing the image to use as background for the banner
             this.$bannerBg = this.$banner.querySelector( options.backgroundSelector );
+            // abort everything if there is no parallax layer
+            if ( !this.$bannerBg ) {
+                console.warn(`The query selector ${options.backgroundSelector} did not match any elements on the document. Aborting parallax function.`);
+                return false;
+            }
+
+            // image element that scrolls with parallax effect
+            this.$bannerBgImage = this.$bannerBg.querySelector( options.backgroundImageSelector );
+            // abort everything if there is no image to use as background
+            if ( !this.$bannerBgImage ) {
+                console.warn(`The query selector ${options.backgroundImageSelector} did not match any elements on the document. Aborting parallax function.`);
+                return false;
+            }
 
             // the height of the wrapper element
             this.bannerHt = this.$banner.offsetHeight;
@@ -24,6 +43,7 @@ window.addEventListener('load', () => {
             this.initialBannerTop = this.$banner.classList.contains('full-screen') 
                 ? 0 
                 : -(this.bannerBgHt - this.bannerHt) / 2;
+            this.$bannerBg.style.top = this.initialBannerTop + 'px';
 
             // amount of pixels the background image should move on scroll,
             // proportional to the amount of pixels window scrolls
@@ -33,8 +53,7 @@ window.addEventListener('load', () => {
             this.bindEvents = this.bindEvents.bind( this );
             this.parallax = this.parallax.bind( this );
 
-            // run all initial class functionality
-            this.$bannerBg.style.top = this.initialBannerTop + 'px';
+            // bind scroll event to parallax function
             this.bindEvents();
         }
 

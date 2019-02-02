@@ -8,7 +8,7 @@ A hero banner component with vertical parallax effect on background image.
 * Use an image with greater height-width proportion than the parallax element wrapper.
 
 ```html
-<div class="hero-banner hero-banner--plx">
+<div class="hero-banner--plx">
     <div class="plx-background">
         <img src="/path/to/image" class="plx-background-img">
     </div>
@@ -16,11 +16,8 @@ A hero banner component with vertical parallax effect on background image.
 ```
 
 ```css
-.hero-banner {
+.hero-banner--plx {
   position: relative;
-}
-
-.hero-banner.hero-banner--plx {
   overflow: hidden;
 }
 
@@ -32,7 +29,7 @@ A hero banner component with vertical parallax effect on background image.
   height: 100%;
 }
 
-.plx-background img {
+.plx-background-img {
     width: 100%;
 }
 ```
