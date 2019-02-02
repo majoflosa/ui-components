@@ -3,9 +3,10 @@ window.addEventListener('load', () => {
     class BasicPlxBanner {
         /**
          * 
-         * @param {string } bannerSelector css selector for main wrapping element
-         * @param { string } backgroundElementSelector css selector for element wrapping background img
-         * @param { string } backgroundImageSelector css selector for background img
+         * @param {string } bannerSelector query selector for main wrapping element
+         * @param { string } backgroundElementSelector query selector for element wrapping background img
+         * @param { string } backgroundImageSelector query selector for background img
+         * @param { number } scrollRatio proportion of how much background image shifts on scroll
          */
         constructor( options ) {
             // the element that wraps content and parallaxed background
@@ -29,19 +30,10 @@ window.addEventListener('load', () => {
             this.scrollRatio = options.scrollRatio || 0.1;
             
             // bind context of all class methods to the created instance object
-            this.init = this.init.bind( this );
             this.bindEvents = this.bindEvents.bind( this );
             this.parallax = this.parallax.bind( this );
 
             // run all initial class functionality
-            this.init();
-        }
-
-        /**
-         * Set initial `top` position of image being used as background,
-         * Bind event listeners to pertinent DOM elements
-         */
-        init() {
             this.$bannerBg.style.top = this.initialBannerTop + 'px';
             this.bindEvents();
         }
