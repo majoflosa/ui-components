@@ -5,8 +5,9 @@ A hero banner component with vertical parallax effect on background image.
 [See live demo](http://ui.maurojflores.com/ui-components/basic-plx/basic-plx.html)
 
 ## Minimal Usage
-* Use an image with greater height-width proportion than the parallax element wrapper.
+Use an image with greater height-width proportion than the parallax element wrapper.
 
+**HTML**
 ```html
 <div class="hero-banner--plx">
     <div class="plx-background">
@@ -15,6 +16,7 @@ A hero banner component with vertical parallax effect on background image.
 </div>
 ```
 
+**CSS**
 ```css
 .hero-banner--plx {
   position: relative;
@@ -34,9 +36,10 @@ A hero banner component with vertical parallax effect on background image.
 }
 ```
 
+**JavaScript**
 ```javascript
-const plxBanner = new BasicPlxBanner( {
-    bannerSelector: '.hero-banner', // query selector for element wrapper
+const plxBanner = new BasicPlxBanner({
+    bannerSelector: '.hero-banner--plx', // query selector for element wrapper
     backgroundSelector: '.plx-background', // query selector for element wrapping background img
     backgroundImageSelector: '.plx-background-img', // query selector for background img
     scrollRatio: -0.2 // defaults to 0.1; for best results use non-zero number between -0.25 and 0.25
