@@ -1,4 +1,4 @@
-.hero-banner {
+.layered-plx {
   position: relative;
   display: flex;
   justify-content: center;
@@ -6,14 +6,14 @@
   flex-direction: column;
   min-height: 500px;
 }
-.hero-banner.no-overlay .background-overlay {
+.layered-plx.no-overlay .background-overlay {
   display: none;
 }
-.hero-banner.full-screen {
+.layered-plx.full-screen {
   height: 100vh;
   overflow: hidden;
 }
-.hero-banner.hero-banner--plx {
+.layered-plx.hero-banner--plx {
   overflow: hidden;
 }
 
