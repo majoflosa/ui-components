@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animated Progress Ring</title>
+    <link rel="stylesheet" href="graph-ring.css">
+</head>
+<body>
+    <nav><a href="../">Back to UI Components Menu</a></nav>
+    
+    <div class="wrap">
+
+        <div class="rings-wrap">
+            <!-- <div class="ring-wrap background-ring-wrap">
+                <svg width="150" height="150">
+                    <circle class="background-ring" 
+                        stroke-width="30" 
+                        stroke="#eeeeee"
+                        fill="transparent" 
+                        r="60" 
+                        cx="75" 
+                        cy="75"
+                    />
+                </svg>
+            </div> -->
+            <div class="ring-wrap data-ring-wrap" data-percent="33">
+                <svg width="150" height="150">
+                    <circle class="data-1" 
+                        stroke-width="30" 
+                        stroke="blue"
+                        fill="transparent" 
+                        r="60" 
+                        cx="75" 
+                        cy="75"
+                    />
+                </svg>
+            </div>
+            <div class="ring-wrap data-ring-wrap" data-percent="50">
+                <svg width="150" height="150">
+                    <circle class="data-2" 
+                        stroke-width="30" 
+                        stroke="red"
+                        fill="transparent" 
+                        r="60" 
+                        cx="75" 
+                        cy="75"
+                    />
+                </svg>
+            </div>
+            <div class="ring-wrap data-ring-wrap" data-percent="15">
+                <svg width="150" height="150">
+                    <circle class="data-3" 
+                        stroke-width="30" 
+                        stroke="green"
+                        fill="transparent" 
+                        r="60" 
+                        cx="75" 
+                        cy="75"
+                    />
+                </svg>
+            </div>
+            <div class="ring-wrap data-ring-wrap" data-percent="2">
+                <svg width="150" height="150">
+                    <circle class="data-4" 
+                        stroke-width="30" 
+                        stroke="yellow"
+                        fill="transparent" 
+                        r="60" 
+                        cx="75" 
+                        cy="75"
+                    />
+                </svg>
+            </div>
+        </div>
+
+        <div class="stats">
+
+        </div>
+
+    </div>
+
+    <script src="graph-ring.js"></script>
+</body>
+</html>

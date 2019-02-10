@@ -1,0 +1,32 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  margin: 75px auto;
+  width: 90%;
+  max-width: 900px;
+}
+
+.rings-wrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.ring-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ring-wrap circle {
+  transform-origin: center;
+}
+
+body {
+  font-family: sans-serif;
+  color: #555555;
+}
+
+/*# sourceMappingURL=graph-ring.css.map */
