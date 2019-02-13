@@ -15,7 +15,7 @@ Live demo pending
 * `length:12` : exactly 12 characters; replace `12` with any number
 * `matches:#password` : must have same value as #password; replace `#password` with any query selector
 * `alphabet` : only letters allowed
-* `cap` : at least one capital
+* `cap` : at least one uppercase letter
 * `allCaps`
 * `noCaps`
 * `alphaNumeric` : must have at least 1 letter and 1 number

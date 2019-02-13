@@ -34,6 +34,12 @@ class FormValidation {
 
         this.fields.forEach( field => {
             const $field = document.querySelector( field.selector );
+            if ( !$field ) {
+                console.warn( `The query selector ${field.selector} did not match any elements. Form validation not passed.` );
+                // this.errors.push( `The query selector ${field.selector} did not match any elements. ` );
+                this.formIsValid = false;
+                return;
+            }
             const $fieldError = $field.parentElement.querySelector( this.errorSelector );
             
             $fieldError.innerText = '';
@@ -104,12 +110,17 @@ class FormValidation {
                     errors.push( `This field must be ${params[0]} characters long. Length submitted: ${value.length} `);
             },
             'email': function( value, errors ) {
-                let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
                 if ( !re.test(value.toLowerCase()) )
                     errors.push( 'This field must be a valid email address.' );
             },
-            'url': function( value, errors ) {},
+            'url': function( value, errors ) {
+                const re = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+
+                if ( !re.test(value) )
+                    errors.push( 'This field must be a valid url.' );
+            },
             'matches': function( value, errors, params ) {
                 const $mold = document.querySelector( params[0] );
                 if ( !$mold ) return errors.push( `There is no ${params[0]} field to match.`);
@@ -118,10 +129,26 @@ class FormValidation {
                 if ( moldValue !== value )
                     errors.push( `Password confirmation does not match password.`)
             },
-            'alphabet': function( value, errors ) {},
-            'cap': function( value, errors ) {},
-            'allCaps': function( value, errors ) {},
-            'noCaps': function( value, errors ) {},
+            'alphabet': function( value, errors ) {
+                const re = /^[A-Za-z]+$/;
+                if ( !re.test(value) )
+                    errors.push( 'This field can only contain letters.' );
+            },
+            'cap': function( value, errors ) {
+                const re = /[A-Z]/;
+                if ( !re.test(value) )
+                    errors.push( 'This field must contain at least one capital letter.' );
+            },
+            'noCaps': function( value, errors ) {
+                const re = /^[a-z]+$/;
+                if ( !re.test(value) )
+                    errors.push( 'This field can only contain lowercase letters.' );
+            },
+            'allCaps': function( value, errors ) {
+                const re = /^[A-Z]+$/;
+                if ( !re.test(value) )
+                    errors.push( 'This field can only contain uppercase letters.' );
+            },
             'noSpaces': function( value, errors ) {},
             'alphaNumeric': function( value, errors ) {},
             'number': function( value, errors ) {},
@@ -139,10 +166,15 @@ window.addEventListener('load', () => {
     const contactValidation = new FormValidation({
         formSelector: '.validation-form',
         fields: [
-            { selector: '#name', rules: ['required'] },
-            { selector: '#email', rules: ['required', 'email'] },
-            { selector: '#password', rules: ['required', 'minLength:4'] },
-            { selector: '#confirm-password', rules: ['required', 'matches:#password'] }
+            // { selector: '#name', rules: ['required'] },
+            // { selector: '#email', rules: ['required', 'email'] },
+            // { selector: '#password', rules: ['required', 'minLength:4'] },
+            // { selector: '#confirm-password', rules: ['required', 'matches:#password'] },
+            // { selector: '#url', rules: ['required', 'url'] },
+            // { selector: '#alphabet', rules: ['required', 'alphabet'] },
+            { selector: '#cap', rules: ['cap'] },
+            { selector: '#all-caps', rules: ['allCaps'] },
+            { selector: '#no-caps', rules: ['noCaps'] },
         ],
         errorSelector: '.error-message'
     });
