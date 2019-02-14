@@ -112,52 +112,82 @@ class FormValidation {
             'email': function( value, errors ) {
                 const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-                if ( !re.test(value.toLowerCase()) )
-                    errors.push( 'This field must be a valid email address.' );
+                if ( value && !re.test(value.toLowerCase()) )
+                    errors.push( 'This field must be a valid email address. ' );
             },
             'url': function( value, errors ) {
                 const re = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 
-                if ( !re.test(value) )
-                    errors.push( 'This field must be a valid url.' );
+                if ( value && !re.test(value) )
+                    errors.push( 'This field must be a valid url. ' );
             },
             'matches': function( value, errors, params ) {
                 const $mold = document.querySelector( params[0] );
-                if ( !$mold ) return errors.push( `There is no ${params[0]} field to match.`);
+                if ( !$mold ) return errors.push( `There is no ${params[0]} field to match. `);
 
                 const moldValue = $mold.value;
                 if ( moldValue !== value )
-                    errors.push( `Password confirmation does not match password.`)
+                    errors.push( `Password confirmation does not match password. `)
             },
             'alphabet': function( value, errors ) {
                 const re = /^[A-Za-z]+$/;
-                if ( !re.test(value) )
-                    errors.push( 'This field can only contain letters.' );
+                if ( value && !re.test(value) )
+                    errors.push( 'This field can only contain letters. ' );
             },
             'cap': function( value, errors ) {
                 const re = /[A-Z]/;
-                if ( !re.test(value) )
-                    errors.push( 'This field must contain at least one capital letter.' );
+                if ( value && !re.test(value) )
+                    errors.push( 'This field must contain at least one capital letter. ' );
             },
             'noCaps': function( value, errors ) {
                 const re = /^[a-z]+$/;
-                if ( !re.test(value) )
-                    errors.push( 'This field can only contain lowercase letters.' );
+                if ( value && !re.test(value) )
+                    errors.push( 'This field can only contain lowercase letters. ' );
             },
             'allCaps': function( value, errors ) {
                 const re = /^[A-Z]+$/;
-                if ( !re.test(value) )
-                    errors.push( 'This field can only contain uppercase letters.' );
+                if ( value && !re.test(value) )
+                    errors.push( 'This field can only contain uppercase letters. ' );
             },
-            'noSpaces': function( value, errors ) {},
-            'alphaNumeric': function( value, errors ) {},
-            'number': function( value, errors ) {},
-            'min': function( value, errors, params ) {},
-            'max': function( value, errors, params ) {},
-            'integer': function( value, errors ) {},
-            'decimal': function( value, errors ) {},
-            'contains': function( value, errors, params) {},
-            'inList': function( value, errors, params ) {},
+            'noSpaces': function( value, errors ) {
+                if ( value && value.includes(' ') )
+                    errors.push( 'This field cannot contain spaces. ' );
+            },
+            'alphaNumeric': function( value, errors ) {
+                const re = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
+                if ( value && !re.test(value) )
+                    errors.push('This field must contain at least one letter and one number, and no special characters. ');
+            },
+            'number': function( value, errors ) {
+                const re = /^[0-9]+$/;
+                if ( value && !re.test(value) )
+                    errors.push( 'This field can only contain numbers. ' );
+            },
+            'min': function( value, errors, params ) {
+                if ( value && (+value < +params[0] || isNaN(+value)) )
+                    errors.push( `This field must contain a number greater or equal to ${params[0]}. ` );
+            },
+            'max': function( value, errors, params ) {
+                if ( value && (+value > +params[0] || isNaN(+value)) )
+                    errors.push( `This field must contain a number that is less than or equal to ${params[0]}. ` );
+            },
+            'integer': function( value, errors ) {
+                if ( value && (+value % 1 !== 0 || isNaN(+value)) )
+                    errors.push( 'This field can only contain whole numbers. ' );
+            },
+            'decimal': function( value, errors ) {
+                if ( value && (+value % 1 === 0 || isNaN(+value)) )
+                    errors.push( 'This field must contain a decimal number. ' );
+            },
+            'contains': function( value, errors, params) {
+                if ( value && !value.includes(params[0]) )
+                    errors.push( `This field must contain "${params[0]}" in it. ` );
+            },
+            'inList': function( value, errors, params ) {
+                const list = [...params];
+                if ( value && !list.includes(value) )
+                    errors.push( `This field must be one of: ${list.join(', ')} `)
+            },
         }
     }
 }
@@ -166,15 +196,24 @@ window.addEventListener('load', () => {
     const contactValidation = new FormValidation({
         formSelector: '.validation-form',
         fields: [
-            // { selector: '#name', rules: ['required'] },
-            // { selector: '#email', rules: ['required', 'email'] },
-            // { selector: '#password', rules: ['required', 'minLength:4'] },
-            // { selector: '#confirm-password', rules: ['required', 'matches:#password'] },
-            // { selector: '#url', rules: ['required', 'url'] },
-            // { selector: '#alphabet', rules: ['required', 'alphabet'] },
+            { selector: '#name', rules: ['required'] },
+            { selector: '#email', rules: ['email'] },
+            { selector: '#password', rules: ['minLength:4'] },
+            { selector: '#confirm-password', rules: ['matches:#password'] },
+            { selector: '#url', rules: ['url'] },
+            { selector: '#alphabet', rules: ['alphabet'] },
             { selector: '#cap', rules: ['cap'] },
             { selector: '#all-caps', rules: ['allCaps'] },
             { selector: '#no-caps', rules: ['noCaps'] },
+            { selector: '#no-spaces', rules: ['noSpaces'] },
+            { selector: '#alphanumeric', rules: ['alphaNumeric'] },
+            { selector: '#number', rules: ['number'] },
+            { selector: '#min', rules: ['min:5'] },
+            { selector: '#max', rules: ['max:10'] },
+            { selector: '#integer', rules: ['integer'] },
+            { selector: '#decimal', rules: ['decimal'] },
+            { selector: '#contains', rules: ['contains:dog'] },
+            { selector: '#in-list', rules: ['inList:dog:cat:5'] },
         ],
         errorSelector: '.error-message'
     });

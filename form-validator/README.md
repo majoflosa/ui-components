@@ -4,6 +4,46 @@ A validation class for forms
 
 Live demo pending
 
+## Example usage
+```html
+<form class="validation-form" method="POST">
+    <div>
+        <label for="name">Name: (required)</label>
+        <input type="text" id="name">
+        <p class="error-message"></p>
+    </div>
+    <div>
+        <label for="email">Email: (required, valid email address)</label>
+        <input type="email" id="email">
+        <p class="error-message"></p>
+    </div>
+    <div>
+        <label for="password">Password: (required, 4 characters minimum)</label>
+        <input type="password" id="password">
+        <p class="error-message"></p>
+    </div>
+    
+    <div>
+        <label for="confirm-password">Confirm Password (required, must match password)</label>
+        <input type="password" id="confirm-password">
+        <p class="error-message"></p>
+    </div>
+</form>
+```
+
+```javascript
+const contactValidation = new FormValidation({
+    formSelector: '.validation-form',
+    fields: [
+        { selector: '#name', rules: ['required'] },
+        { selector: '#email', rules: ['required', 'email'] },
+        { selector: '#password', rules: ['required', 'minLength:4'] },
+        { selector: '#confirm-password', rules: ['required', 'matches:#password'] }
+    ],
+    errorSelector: '.error-message'
+});
+```
+
 
 ## Validation rules
 
@@ -18,7 +58,7 @@ Live demo pending
 * `cap` : at least one uppercase letter
 * `allCaps`
 * `noCaps`
-* `alphaNumeric` : must have at least 1 letter and 1 number
+* `alphaNumeric` : must have at least 1 letter and 1 number, no special characters
 * `noSpaces`
 * `number` : must be number
 * `min:5` : must be a number greater than 4; replace `5` with any number
