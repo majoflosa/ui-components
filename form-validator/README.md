@@ -32,7 +32,7 @@ Live demo pending
 ```
 
 ```javascript
-const contactValidation = new FormValidation({
+const formValidation = new FormValidation({
     formSelector: '.validation-form',
     fields: [
         { selector: '#name', rules: ['required'] },
