@@ -1,10 +1,10 @@
 # Form Validator
 
-A validation class for forms
+A set of validation rules and functionality for HTML forms
 
-Live demo pending
+[See Live Demo](http://ui.maurojflores.com/ui-components/form-validator/form-validator.html)
 
-## Example usage
+## Usage Example
 ```html
 <form class="validation-form" method="POST">
     <div>
@@ -22,7 +22,6 @@ Live demo pending
         <input type="password" id="password">
         <p class="error-message"></p>
     </div>
-    
     <div>
         <label for="confirm-password">Confirm Password (required, must match password)</label>
         <input type="password" id="confirm-password">

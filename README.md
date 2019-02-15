@@ -36,3 +36,5 @@ It is ongoing, and new components are added periodically, as well as code revisi
 
 * **Modal Box** - [Live demo](http://ui.maurojflores.com/ui-components/modal-box/modal-box.html)
 
+* **Form Validator** - [Live demo](http://ui.maurojflores.com/ui-components/form-validator/form-validator.html)
+
