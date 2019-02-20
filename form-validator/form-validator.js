@@ -222,7 +222,7 @@ class FormValidation {
             // field must contain a number greater or equal to specified number
             'min': function( value, errors, params ) {
                 if ( value && (+value < +params[0] || isNaN(+value)) )
-                errors.push( `This field must contain a number greater or equal to ${params[0]}. ` );
+                    errors.push( `This field must contain a number greater or equal to ${params[0]}. ` );
             },
             // field must contain a number less than or equal to specified number
             'max': function( value, errors, params ) {
