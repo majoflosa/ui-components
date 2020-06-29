@@ -1,0 +1,27 @@
+{
+  "name": "ui-components",
+  "version": "1.0.0",
+  "description": "A library of commonly-used web UI components with minimal styles and dependencies",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "start-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majoflosa/ui-components.git"
+  },
+  "keywords": [
+    "ui"
+  ],
+  "author": "Mauricio J Flores",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/majoflosa/ui-components/issues"
+  },
+  "homepage": "https://github.com/majoflosa/ui-components#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@storybook/html": "^5.3.19",
+    "babel-loader": "^8.1.0"
+  }
+}
