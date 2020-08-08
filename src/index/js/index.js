@@ -11,14 +11,14 @@ class ComponentsIndex {
             hero,
         };
         this.dom = {};
-        this.instances = [];
         this.activeView = null;
 
         this.updateView = this.updateView.bind(this);
 
         this.setDomElements();
-        this.renderComponents();
         this.bindEvents();
+
+        if (window.location.hash) this.updateView();
     }
 
     setDomElements() {
@@ -33,22 +33,24 @@ class ComponentsIndex {
         this.dom.menuLinks.forEach(link => link.addEventListener('click', (e) => this.updateView(e, true)));
     }
 
-    renderComponents() {
-        this.dom.viewSections.forEach(section => {
-            const component = section.dataset.component;
-            const container = section.firstElementChild;
-            const element = this.components[component] && elementFromTemplate(this.components[component].template);
-            
-            if (element) {
-                container.appendChild(element);
-                this.initComponent(component);
-            };
-        });
+    renderComponent(component) {
+        const viewSection = this.dom.viewWrapper.querySelector(`[data-component="${component}"]`);
+        const container = viewSection.firstElementChild;
+        const element = this.components[component] && elementFromTemplate(this.components[component].template);
+
+        if (!element) return;
+
+        container.appendChild(element);
+        this.initComponent(component);
+        this.components[component].hasRendered = true;
     }
 
     initComponent(component) {
-        if (this.components[component] && this.components[component].init) {
-            this.instances.push(new this.components[component].init());
+        const _component = this.components[component];
+
+        if (_component && _component.init) {
+            _component.instances = component.instances || [];
+            _component.instances.push(new _component.init());
         };
     }
 
@@ -58,12 +60,15 @@ class ComponentsIndex {
 
         const view = isClickEvent ? e.currentTarget.getAttribute('href') : window.location.hash;
         const componentView = view && document.querySelector(view);
-        if (componentView) {
-            componentView.classList.add('view-active');
-            this.activeView = componentView;
+        if (!componentView) return;
 
-            if (isClickEvent) window.history.pushState({}, '', view);
-        };
+        const component = componentView.dataset.component
+        if (this.components[component] && !this.components[component].hasRendered) this.renderComponent(component);
+
+        componentView.classList.add('view-active');
+        this.activeView = componentView;
+
+        if (isClickEvent) window.history.pushState({}, '', view);
     }
 }
 
