@@ -10,52 +10,34 @@
     </style>
 </head>
 <body>
-    <h1>UI Features</h1>
-    <h4>by <a href="http://maurojflores.com">Mauricio J Flores</a></h4>
-    <ul>
-        <li><a href="banner/banner.html">Hero Banner</a></li>
-    </ul>
-    <ul>
-        <li><a href="basic-plx/basic-plx.html">Basic Parallax</a></li>
-        <li><a href="layered-plx/layered-plx.html">Layered Parallax</a></li>
-        <li><a href="multiple-plx/multiple-plx.html">Multiple Parallax Sections</a></li>
-        <li><a href="hover-plx/hover-plx.html">Parallax on Mouse Movement</a></li>
-    </ul>
-    <ul>
-        <li><a href="loading-animations/loading-animations.html">Loading Animations</a></li>
-        <li><a href="loading-screen/loading-screen.html">Loading Screen</a></li>
-    </ul>
-    <ul>
-        <li><a href="progress-ring/progress-ring.html">Animated Progress Ring</a></li>
-    </ul>
-    <ul>
-        <li><a href="button-effects/button-effects.html">Button Effects</a></li>
-    </ul>
-    <ul>
-        <li><a href="fade-in-onscroll/fade-in-onscroll.html">Fade In on Scroll</a></li>
-        <li><a href="fade-in-onscroll-multiple/fade-in-onscroll-multiple.html">Fade In on Scroll Multiple</a></li>
-    </ul>
-    <ul>
-        <li><a href="scrollspy/scrollspy.html">Scrollspy</a></li>
-        <li><a href="sticky-nav/sticky-nav.html">Page with sticky Navigation Menu</a></li>
-    </ul>
-    <ul>
-        <li><a href="side-menu/side-menu.html">Slide-in Side Menu</a></li>
-    </ul>
-    <ul>
-        <li><a href="carousel-gallery/carousel-gallery.html">Carousel Gallery</a></li>
-        <li><a href="infinite-carousel/infinite-carousel.html">Infinite Carousel</a></li>
-    </ul>
-    <ul>
-        <li><a href="tool-tips/tool-tips.html">Tooltip</a></li>
-    </ul>
-    <ul>
-        <li><a href="modal-box/modal-box.html">Modal Box</a></li>
-    </ul>
-    <ul>
-        <li><a href="form-validator/form-validator.html">Modal Box</a></li>
-    </ul>
+    <header>
+        <h1>UI Components: Index</h1>
+    </header>
 
-    <p><a href="https://github.com/majoflosa/ui-components">See GitHub repo</a></p>
+    <div class="content-wrap">
+        <nav id="menu">
+            <a href="#view-navbar">Nav bar</a>
+            <a href="#view-button">Buttons</a>
+            <a href="#view-hero">Hero</a>
+        </nav>
+
+        <main id="main">
+            <div class="view-wrapper">
+                <div id="view-navbar" class="view-section" data-component="navbar">
+                    <div class="view-section__component"></div>
+                </div>
+                
+                <div id="view-button" class="view-section" data-component="button">
+                    <div class="view-section__component"></div>
+                </div>
+                
+                <div id="view-hero" class="view-section" data-component="hero">
+                    <div class="view-section__component"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/script.js"></script>
 </body>
 </html>

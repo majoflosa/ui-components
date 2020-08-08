@@ -1,0 +1,22 @@
+#menu {
+    background-color: #555555;
+    color: white;
+    width: 250px;
+    position: fixed;
+    top: 87px;
+    height: 100vh;
+    overflow: scroll;
+
+    a {
+        display: block;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        text-decoration: none;
+        padding: 8px 0 8px 12px;
+
+        &:hover {
+            background-color: #666666;
+        }
+    }
+}
