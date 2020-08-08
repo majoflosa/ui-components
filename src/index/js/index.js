@@ -14,7 +14,7 @@ class ComponentsIndex {
         this.instances = [];
         this.activeView = null;
 
-        this.onClickMenuLink = this.onClickMenuLink.bind(this);
+        this.updateView = this.updateView.bind(this);
 
         this.setDomElements();
         this.renderComponents();
@@ -29,7 +29,8 @@ class ComponentsIndex {
     }
 
     bindEvents() {
-        this.dom.menuLinks.forEach(link => link.addEventListener('click', this.onClickMenuLink));
+        window.addEventListener('hashchange', (e) => this.updateView(e));
+        this.dom.menuLinks.forEach(link => link.addEventListener('click', (e) => this.updateView(e, true)));
     }
 
     renderComponents() {
@@ -51,16 +52,17 @@ class ComponentsIndex {
         };
     }
 
-    onClickMenuLink(e) {
-        e.preventDefault();
-
+    updateView(e, isClickEvent) {
+        if (isClickEvent) e.preventDefault();
         if (this.activeView) this.activeView.classList.remove('view-active');
 
-        const view = e.currentTarget.getAttribute('href');
-        const componentView = document.querySelector(view);
+        const view = isClickEvent ? e.currentTarget.getAttribute('href') : window.location.hash;
+        const componentView = view && document.querySelector(view);
         if (componentView) {
             componentView.classList.add('view-active');
             this.activeView = componentView;
+
+            if (isClickEvent) window.history.pushState({}, '', view);
         };
     }
 }
