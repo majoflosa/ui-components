@@ -105,3 +105,4 @@ class ComponentsIndex {
 
 window.componentsIndex = new ComponentsIndex();
 console.log(window.componentsIndex);
+window.parseDom = elementFromTemplate;

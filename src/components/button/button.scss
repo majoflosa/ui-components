@@ -1,11 +1,99 @@
+$primary-color: blue                        !default;
+$primary-color-hover: lighten(blue, 20%)    !default;
+$secondary-color: green                     !default;
+$secondary-color-hover: lighten(green, 20%) !default;
+$danger-color: red                          !default;
+$danger-color-hover: lighten(red, 20%)      !default;
+$cancel-color: gray                         !default;
+$cancel-color-hover: lighten(gray, 20%)     !default;
+
+$padding-sizes: (
+    'small': 4px 8px,
+    'medium': 8px 16px,
+    'large': 12px 20px,
+);
+
+@mixin button-base($color, $solid: true, $radius: 0) {
+    @if $solid {
+        background-color: $color;
+        color: white;
+    } @else {
+        background-color: transparent;
+        color: $color;
+    }
+
+    box-sizing: border-box;
+    border: 1px solid $color;
+    border-radius: $radius;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+        @if $solid {
+            background-color: lighten($color, 20%);
+            border-color: lighten($color, 20%);
+        } @else {
+            background-color: $color;
+            color: white;
+        }
+    }
+}
+
 .mf-btn {
     appearance: none;
     background: none;
-    border: 1px solid #ddd;
-    color: #333333;
+    color: inherit;
     font-size: inherit;
     font-family: inherit;
-    padding: 4px 8px;
-    border-radius: 2px;
+    padding: map-get($map: $padding-sizes, $key: 'medium');
     cursor: pointer;
+
+    &--primary {
+        @include button-base($primary-color, true, 3px);
+    }
+    &--primary-border {
+        @include button-base($primary-color, false, 3px);
+    }
+
+    &--secondary {
+        @include button-base($secondary-color, true, 3px);
+    }
+    &--secondary-border {
+        @include button-base($secondary-color, false, 3px);
+    }
+    
+    &--danger {
+        @include button-base($danger-color, true, 3px);
+    }
+    &--danger-border {
+        @include button-base($danger-color, false, 3px);
+    }
+    
+    &--cancel {
+        @include button-base($cancel-color, true, 3px);
+    }
+    &--cancel-border {
+        @include button-base($cancel-color, false, 3px);
+    }
+
+    &--small {
+        padding: map-get($map: $padding-sizes, $key: 'small');
+    }
+    &--medium {
+        padding: map-get($map: $padding-sizes, $key: 'medium');
+    }
+    &--large {
+        padding: map-get($map: $padding-sizes, $key: 'large');
+    }
+
+    &--full-width {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+        flex-grow: 1;
+    }
+
+    &--round {
+        border-radius: 9999px;
+    }
 }
