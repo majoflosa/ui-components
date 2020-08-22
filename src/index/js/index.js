@@ -23,11 +23,13 @@ class ComponentsIndex {
         this.bindEvents();
 
         // set initial active view
-        if (window.location.hash) this.updateView();
+        this.updateView();
+        if (!window.location.hash) window.history.pushState({}, '', '#view-intro');
     }
 
     // store useful dom elements
     setDomElements() {
+        this.dom.componentTitle = document.getElementById('component-title');
         this.dom.menu = document.getElementById('menu');
         this.dom.menuLinks = this.dom.menu.querySelectorAll('a');
         this.dom.viewWrapper = document.querySelector('.view-wrapper');
@@ -38,6 +40,27 @@ class ComponentsIndex {
     bindEvents() {
         window.addEventListener('hashchange', this.updateView);
         this.dom.menuLinks.forEach(link => link.addEventListener('click', (e) => this.updateView(e, true)));
+        this.dom.viewSections.forEach(section => {
+            const prevLink = section.querySelector('[data-nav="prev"]');
+            const nextLink = section.querySelector('[data-nav="next"]');
+
+            const currentMenuLink = this.dom.menu.querySelector(`[href="#${section.id}"]`);
+            
+            if (prevLink) {
+                const prevViewHash = currentMenuLink.previousElementSibling
+                    ? currentMenuLink.previousElementSibling.getAttribute('href')
+                    : '#';
+                prevLink.setAttribute('href', prevViewHash);
+                prevLink.addEventListener('click', (e) => this.updateView(e, true));
+            }
+            if (nextLink) {
+                const nextViewHash = currentMenuLink.nextElementSibling
+                    ? currentMenuLink.nextElementSibling.getAttribute('href')
+                    : '#';
+                nextLink.setAttribute('href', nextViewHash);
+                nextLink.addEventListener('click', (e) => this.updateView(e, true));
+            }
+        });
     }
 
     // render a component
@@ -78,10 +101,16 @@ class ComponentsIndex {
         // if view is being updated by clicking a nav link, prevent link default action
         if (isClickEvent) e.preventDefault();
         // remove active class from current active view (if there is one) to hide it
-        if (this.activeView) this.activeView.classList.remove('view-active');
+        if (this.activeView) {
+            this.activeView.classList.remove('view-active');
+            this.dom.menu.querySelector('.active').classList.remove('active');
+        }
 
-        // get selected view from clicked link or current hash in url
-        const view = isClickEvent ? e.currentTarget.getAttribute('href') : window.location.hash;
+        // get selected view from clicked link or current hash in url;
+        // if neither, default to the intro view
+        const view = isClickEvent 
+            ? e.currentTarget.getAttribute('href') 
+            : window.location.hash || '#view-intro';
         // get dom element corresponding to selected view
         const componentView = view && this.dom.viewWrapper.querySelector(view);
         // if there is no such element, exit function
@@ -95,6 +124,11 @@ class ComponentsIndex {
 
         // add the active class view to make it display
         componentView.classList.add('view-active');
+        // add active class to menu link
+        const menuLink = this.dom.menu.querySelector(`[href="${view}"]`);
+        menuLink.classList.add('active');
+        // update title
+        this.dom.componentTitle.innerText = menuLink.innerText;
         // update active view state
         this.activeView = componentView;
 

@@ -1,6 +1,6 @@
 #menu {
-    background-color: #555555;
-    color: white;
+    // background-color: #fafafa;
+    border-right: 1px solid #cccccc;
     width: 250px;
     position: fixed;
     top: 0;
@@ -17,7 +17,12 @@
         padding: 8px 0 8px 12px;
 
         &:hover {
-            background-color: #666666;
+            background-color: #f0f0f0;
+        }
+        
+        &.active {
+            background-color: #f0f0f0;
+            font-weight: bold;
         }
     }
 }

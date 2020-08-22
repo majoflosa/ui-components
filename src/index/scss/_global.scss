@@ -4,6 +4,22 @@ body {
     & > header > h1 {
         margin: 0 0 20px 250px;
         padding: 14px 30px;
-        background-color: #f0f0f0;
+        border-bottom: 1px solid #dddddd;
+        background-color: #fafafa;
+    }
+}
+
+#footer {
+    padding: 30px;
+    background-color: #555555;
+    color: white;
+    position: relative;
+    z-index: 2;
+    font-size: 0.9rem;
+    text-align: center;
+
+    a {
+        font-weight: bold;
+        color: inherit;
     }
 }

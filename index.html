@@ -11,11 +11,12 @@
 </head>
 <body>
     <header>
-        <h1>UI Components: Index</h1>
+        <h1>UI Components: <span id="component-title">Index</span></h1>
     </header>
 
     <div class="content-wrap">
         <nav id="menu">
+            <a href="#view-intro">Introduction</a>
             <a href="#view-navbar">Nav bar</a>
             <a href="#view-button">Buttons</a>
             <a href="#view-hero">Hero</a>
@@ -23,20 +24,42 @@
 
         <main id="main">
             <div class="view-wrapper">
+                <div id="view-intro" class="view-section" data-component="intro">
+                    <div class="view-section__component"></div>
+                    <div class="view-section__nav">
+                        <a href="#" class="view-section__nav-next" data-nav="next">Next »</a>
+                    </div>
+                </div>
+
                 <div id="view-navbar" class="view-section" data-component="navbar">
                     <div class="view-section__component"></div>
+                    <div class="view-section__nav">
+                        <a href="#" class="view-section__nav-prev" data-nav="prev">« Previous</a>
+                        <a href="#" class="view-section__nav-next" data-nav="next">Next »</a>
+                    </div>
                 </div>
                 
                 <div id="view-button" class="view-section" data-component="button">
                     <div class="view-section__component"></div>
+                    <div class="view-section__nav">
+                        <a href="#" class="view-section__nav-prev" data-nav="prev">« Previous</a>
+                        <a href="#" class="view-section__nav-next" data-nav="next">Next »</a>
+                    </div>
                 </div>
                 
                 <div id="view-hero" class="view-section" data-component="hero">
                     <div class="view-section__component"></div>
+                    <div class="view-section__nav">
+                        <a href="#" class="view-section__nav-prev" data-nav="prev">« Previous</a>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
+
+    <footer id="footer">
+        By <a href="http://maurojflores.com" target="_blank">Mauricio J Flores</a>
+    </footer>
 
     <script src="/script.js"></script>
 </body>

@@ -1,16 +1,18 @@
 #view-button {
-    padding-left: 30px;
-    padding-right: 30px;
-
-    &:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
     .mf-btn {
         margin-bottom: 10px;
         float: left;
         clear: both;
+    }
+    
+    .view-section__component {
+        padding-left: 30px;
+        padding-right: 30px;
+
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
     }
 }

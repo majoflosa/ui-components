@@ -1,3 +1,21 @@
 .view-section {
-    padding-bottom: 100px;
+    &__component {
+        min-height: 67vh;
+    }
+
+    &__nav {
+        margin-top: 30px;
+        padding: 30px;
+        border-top: 1px solid #dddddd;
+        background-color: #fafafa;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+#view-intro {
+    .view-section__component {
+        padding-left: 30px;
+    }
 }
