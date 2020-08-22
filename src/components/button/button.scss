@@ -1,3 +1,4 @@
+// overwrite these with theme colors
 $primary-color: blue                        !default;
 $primary-color-hover: lighten(blue, 20%)    !default;
 $secondary-color: green                     !default;
@@ -17,9 +18,17 @@ $padding-sizes: (
     @if $solid {
         background-color: $color;
         color: white;
+
+        svg {
+            fill: white;
+        }
     } @else {
         background-color: transparent;
         color: $color;
+
+        svg {
+            fill: $color;
+        }
     }
 
     box-sizing: border-box;
@@ -27,14 +36,23 @@ $padding-sizes: (
     border-radius: $radius;
     transition: all 0.25s ease-in-out;
 
-    &:hover {
+    &:hover, &:active {
         @if $solid {
             background-color: lighten($color, 20%);
             border-color: lighten($color, 20%);
         } @else {
             background-color: $color;
             color: white;
+
+            svg {
+                fill: white;
+            }
         }
+    }
+
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px lighten(blue, 30%);
     }
 }
 
@@ -95,5 +113,29 @@ $padding-sizes: (
 
     &--round {
         border-radius: 9999px;
+    }
+
+    &--icon-right, &--icon-left {
+        span, svg {
+            display: inline-block;
+            vertical-align: baseline;
+        }
+
+        svg {
+            width: 0.9rem;
+            height: 0.9rem;
+        }
+    }
+
+    &--icon-right {
+        svg {
+            margin-left: 10px;
+        }
+    }
+
+    &--icon-left {
+        svg {
+            margin-right: 10px;
+        }
     }
 }
