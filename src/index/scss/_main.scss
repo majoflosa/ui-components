@@ -9,3 +9,17 @@
 .view-active {
     display: block;
 }
+
+.view-nav {
+    margin-top: 30px;
+    padding: 30px;
+    border-top: 1px solid #dddddd;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .hidden {
+        display: none;
+    }
+}

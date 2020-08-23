@@ -17,6 +17,7 @@ class ComponentsIndex {
 
         // bind methods to instance context
         this.updateView = this.updateView.bind(this);
+        this.updateFooterNav = this.updateFooterNav.bind(this);
 
         // initiate functionality
         this.setDomElements();
@@ -25,6 +26,8 @@ class ComponentsIndex {
         // set initial active view
         this.updateView();
         if (!window.location.hash) window.history.pushState({}, '', '#view-intro');
+        // set initial href & style for bottom nav links
+        this.updateFooterNav();
     }
 
     // store useful dom elements
@@ -34,33 +37,17 @@ class ComponentsIndex {
         this.dom.menuLinks = this.dom.menu.querySelectorAll('a');
         this.dom.viewWrapper = document.querySelector('.view-wrapper');
         this.dom.viewSections = this.dom.viewWrapper.querySelectorAll('.view-section');
+        this.dom.viewNavLinks = this.dom.viewWrapper.nextElementSibling.querySelectorAll('a');
     }
 
     // bind events to respective dom elements
     bindEvents() {
         window.addEventListener('hashchange', this.updateView);
         this.dom.menuLinks.forEach(link => link.addEventListener('click', (e) => this.updateView(e, true)));
-        this.dom.viewSections.forEach(section => {
-            const prevLink = section.querySelector('[data-nav="prev"]');
-            const nextLink = section.querySelector('[data-nav="next"]');
-
-            const currentMenuLink = this.dom.menu.querySelector(`[href="#${section.id}"]`);
-            
-            if (prevLink) {
-                const prevViewHash = currentMenuLink.previousElementSibling
-                    ? currentMenuLink.previousElementSibling.getAttribute('href')
-                    : '#';
-                prevLink.setAttribute('href', prevViewHash);
-                prevLink.addEventListener('click', (e) => this.updateView(e, true));
-            }
-            if (nextLink) {
-                const nextViewHash = currentMenuLink.nextElementSibling
-                    ? currentMenuLink.nextElementSibling.getAttribute('href')
-                    : '#';
-                nextLink.setAttribute('href', nextViewHash);
-                nextLink.addEventListener('click', (e) => this.updateView(e, true));
-            }
-        });
+        this.dom.viewNavLinks.forEach(link => link.addEventListener('click', (e) => {
+            this.updateView(e, true);
+            this.updateFooterNav();
+        }));
     }
 
     // render a component
@@ -112,28 +99,54 @@ class ComponentsIndex {
             ? e.currentTarget.getAttribute('href') 
             : window.location.hash || '#view-intro';
         // get dom element corresponding to selected view
-        const componentView = view && this.dom.viewWrapper.querySelector(view);
+        this.activeView = view && this.dom.viewWrapper.querySelector(view);
         // if there is no such element, exit function
-        if (!componentView) return;
+        if (!this.activeView) return;
 
         // get component name from component element's data attribute
-        const component = componentView.dataset.component;
+        const component = this.activeView.dataset.component;
         // if the component has not been rendered before, render it now
         if (this.components[component] && !this.components[component].hasRendered)
             this.renderComponent(component);
 
         // add the active class view to make it display
-        componentView.classList.add('view-active');
+        this.activeView.classList.add('view-active');
         // add active class to menu link
-        const menuLink = this.dom.menu.querySelector(`[href="${view}"]`);
-        menuLink.classList.add('active');
+        this.activeMenuLink = this.dom.menu.querySelector(`[href="${view}"]`);
+        this.activeMenuLink.classList.add('active');
         // update title
-        this.dom.componentTitle.innerText = menuLink.innerText;
-        // update active view state
-        this.activeView = componentView;
+        this.dom.componentTitle.innerText = this.activeMenuLink.innerText;
 
         // sync window history to enable 'back' and 'forward' navigation
         if (isClickEvent) window.history.pushState({}, '', view);
+    }
+
+    updateFooterNav() {
+        const prevLink = this.dom.viewNavLinks[0];
+        const nextLink = this.dom.viewNavLinks[1];
+
+        // get hash for prev/next view from menu links adjacent to active one
+        const prevHref = this.activeMenuLink.previousElementSibling
+            ? this.activeMenuLink.previousElementSibling.getAttribute('href')
+            : null;
+        const nextHref = this.activeMenuLink.nextElementSibling
+            ? this.activeMenuLink.nextElementSibling.getAttribute('href')
+            : null;
+
+        // update prev link href and style
+        if (!prevHref) {
+            prevLink.classList.add('hidden');
+        } else {
+            prevLink.classList.remove('hidden');
+            prevLink.setAttribute('href', prevHref);
+        }
+        // update prev link href and style
+        if (!nextHref) {
+            nextLink.classList.add('hidden');
+        } else {
+            nextLink.classList.remove('hidden');
+            nextLink.setAttribute('href', nextHref);
+        }
     }
 }
 

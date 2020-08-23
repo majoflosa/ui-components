@@ -66,41 +66,43 @@ $padding-sizes: (
     cursor: pointer;
 
     &--primary {
-        @include button-base($primary-color, true, 3px);
+        @include button-base($primary-color, true);
     }
     &--primary-border {
-        @include button-base($primary-color, false, 3px);
+        @include button-base($primary-color, false);
     }
 
     &--secondary {
-        @include button-base($secondary-color, true, 3px);
+        @include button-base($secondary-color, true);
     }
     &--secondary-border {
-        @include button-base($secondary-color, false, 3px);
+        @include button-base($secondary-color, false);
     }
     
     &--danger {
-        @include button-base($danger-color, true, 3px);
+        @include button-base($danger-color, true);
     }
     &--danger-border {
-        @include button-base($danger-color, false, 3px);
+        @include button-base($danger-color, false);
     }
     
     &--cancel {
-        @include button-base($cancel-color, true, 3px);
+        @include button-base($cancel-color, true);
     }
     &--cancel-border {
-        @include button-base($cancel-color, false, 3px);
+        @include button-base($cancel-color, false);
     }
 
     &--small {
         padding: map-get($map: $padding-sizes, $key: 'small');
+        font-size: 0.9rem;
     }
     &--medium {
         padding: map-get($map: $padding-sizes, $key: 'medium');
     }
     &--large {
         padding: map-get($map: $padding-sizes, $key: 'large');
+        font-size: 1.25rem;
     }
 
     &--full-width {
@@ -129,13 +131,13 @@ $padding-sizes: (
 
     &--icon-right {
         svg {
-            margin-left: 10px;
+            margin-left: 4px;
         }
     }
 
     &--icon-left {
         svg {
-            margin-right: 10px;
+            margin-right: 4px;
         }
     }
 }
