@@ -35,5 +35,8 @@
     "style-loader": "^1.2.1",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "highlight.js": "^10.1.2"
   }
 }

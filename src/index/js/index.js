@@ -1,5 +1,6 @@
 import { elementFromTemplate } from '../../utils/dom';
 import components from './export-components';
+import views from './export-views';
 
 import '../scss/style.scss';
 
@@ -10,6 +11,8 @@ class ComponentsIndex {
     constructor() {
         // array of components available in project
         this.components = components;
+        // array of views available in project
+        this.views = views;
         // cache of dome elements
         this.dom = {};
         // current view in state
@@ -43,43 +46,14 @@ class ComponentsIndex {
     // bind events to respective dom elements
     bindEvents() {
         window.addEventListener('hashchange', this.updateView);
-        this.dom.menuLinks.forEach(link => link.addEventListener('click', (e) => this.updateView(e, true)));
+        this.dom.menuLinks.forEach(link => link.addEventListener('click', (e) => {
+            this.updateView(e, true);
+            this.updateFooterNav();
+        }));
         this.dom.viewNavLinks.forEach(link => link.addEventListener('click', (e) => {
             this.updateView(e, true);
             this.updateFooterNav();
         }));
-    }
-
-    // render a component
-    renderComponent(component) {
-        // dom element representing the view of rendered component
-        const viewSection = this.dom.viewWrapper.querySelector(`[data-component="${component}"]`);
-        // dom element wrapping the rendered component
-        const container = viewSection.firstElementChild;
-        // dom element for actual component
-        const element = this.components[component] && elementFromTemplate(this.components[component].template);
-
-        // if no element is produced from template, exit function
-        if (!element) return;
-
-        // render element in dom
-        container.appendChild(element);
-        // initiate component functionality
-        this.initComponent(component);
-        // flag component as rendered
-        this.components[component].hasRendered = true;
-    }
-
-    // initiate component functionality
-    initComponent(component) {
-        // shorthand for component in the instance's list
-        const _component = this.components[component];
-
-        // if the component has any functionality, initiate it and add it to its instances list
-        if (_component && _component.init) {
-            _component.instances = component.instances || [];
-            _component.instances.push(new _component.init());
-        };
     }
 
     // update the view when 'route' changes; can be updated by nav links, updating url,
@@ -106,8 +80,14 @@ class ComponentsIndex {
         // get component name from component element's data attribute
         const component = this.activeView.dataset.component;
         // if the component has not been rendered before, render it now
-        if (this.components[component] && !this.components[component].hasRendered)
-            this.renderComponent(component);
+
+        // if the view behavior has not been initialized, initialize now
+        if (this.views[view] && this.views[view].init && !this.views[view].instance) {
+            this.views[view].instance = new this.views[view].init(
+                view,
+                this.components[component].className
+            );
+        }
 
         // add the active class view to make it display
         this.activeView.classList.add('view-active');
@@ -119,6 +99,7 @@ class ComponentsIndex {
 
         // sync window history to enable 'back' and 'forward' navigation
         if (isClickEvent) window.history.pushState({}, '', view);
+        window.scrollTo(0, 0);
     }
 
     updateFooterNav() {

@@ -1,13 +1,10 @@
-import template from './button.html';
 import './button.scss';
 
 class ButtonComponent {
-    constructor() {
+    constructor(el) {
+        this.el = el;
         console.log('button initiated');
     }
 }
 
-export default {
-    template,
-    init: ButtonComponent,
-};
+export default ButtonComponent;

@@ -1,6 +1,7 @@
-import template from './hero.html';
 import './hero.scss';
 
-export default {
-    template,
-};
+class HeroComponent {
+
+}
+
+export default HeroComponent;
