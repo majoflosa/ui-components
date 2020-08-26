@@ -17,6 +17,7 @@ class ComponentsIndex {
         this.dom = {};
         // current view in state
         this.activeView = null;
+        this.activeMenuLink = null;
 
         // bind methods to instance context
         this.updateView = this.updateView.bind(this);
@@ -62,10 +63,8 @@ class ComponentsIndex {
         // if view is being updated by clicking a nav link, prevent link default action
         if (isClickEvent) e.preventDefault();
         // remove active class from current active view (if there is one) to hide it
-        if (this.activeView) {
-            this.activeView.classList.remove('view-active');
-            this.dom.menu.querySelector('.active').classList.remove('active');
-        }
+        if (this.activeView) this.activeView.classList.remove('view-active');
+        if (this.activeMenuLink) this.activeMenuLink.classList.remove('active');
 
         // get selected view from clicked link or current hash in url;
         // if neither, default to the intro view
@@ -77,16 +76,9 @@ class ComponentsIndex {
         // if there is no such element, exit function
         if (!this.activeView) return;
 
-        // get component name from component element's data attribute
-        const component = this.activeView.dataset.component;
-        // if the component has not been rendered before, render it now
-
         // if the view behavior has not been initialized, initialize now
         if (this.views[view] && this.views[view].init && !this.views[view].instance) {
-            this.views[view].instance = new this.views[view].init(
-                view,
-                this.components[component].className
-            );
+            this.views[view].instance = new this.views[view].init(view);
         }
 
         // add the active class view to make it display

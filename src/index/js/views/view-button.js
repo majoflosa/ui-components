@@ -1,4 +1,4 @@
-import { elementFromTemplate } from '../../../utils/dom';
+import { elementFromTemplate, formatDomString, htmlRegExps as re } from '../../../utils/dom';
 import components from '../export-components';
 import ButtonComponent from '../../../components/button/button';
 
@@ -13,10 +13,20 @@ class ButtonView {
         
         this.setDomElements();
         this.setCodeMap();
-        this.setViewContent();
+        this.render();
         this.bindEvents();
+
+        // const template = '<div><p>Testing<em>test</em></p></div>';
+        // let match;
+        // let i = 0;
+        // while (match = re.deepElement.exec(template)) {
+        //     console.log('match: ', match);
+            
+        //     i++;
+        //     if (i > 10) break;
+        // }
     }
-    
+
     setDomElements() {
         this.dom.templateEl = elementFromTemplate(this.component.template);
         this.dom.components = this.dom.templateEl.querySelectorAll(`.${this.component.className}`);
@@ -24,14 +34,17 @@ class ButtonView {
 
     setCodeMap() {
         this.dom.components.forEach(component => {
-            const stringed = component.outerHTML
+            let stringHTML = component.outerHTML
+                .replace(/<svg\b.*<\/svg>/, '<svg>/* icon of your choice here */</svg>')
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;');
-            this.codeMap.push({ html: stringed });
+            // console.log('stringHTML: ', stringHTML);
+
+            this.codeMap.push({ html: stringHTML });
         });
     }
 
-    setViewContent() {
+    render() {
         const wrap = document.createElement('div');
         this.dom.components.forEach((component, i) => {
             const story = document.createElement('div');
