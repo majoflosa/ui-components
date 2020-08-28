@@ -4,7 +4,6 @@
   "description": "A library of commonly-used web UI components with minimal styles and dependencies",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook",
     "webpack": "webpack",
     "start": "webpack-dev-server --mode development --hot",
     "build": "webpack --mode production"
@@ -25,7 +24,6 @@
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.11.0",
-    "@storybook/html": "^5.3.19",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.4.2",
     "html-loader": "^1.1.0",
