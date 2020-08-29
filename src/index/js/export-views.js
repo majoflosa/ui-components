@@ -6,6 +6,11 @@ import NavbarView from './views/view-navbar';
 export default {
     '#view-intro': { hash: '#view-intro', name: 'intro', title: 'Introduction', init: IntroView },
     '#view-button': { hash: '#view-button', name: 'button', title: 'Buttons', init: ButtonView },
-    '#view-hero': { hash: '#view-hero', name: 'hero', title: 'Hero', init: HeroView },
+    '#view-hero': {
+        hash: '#view-hero',
+        name: 'hero',
+        title: 'Hero',
+        init: HeroView,
+    },
     '#view-navbar': { hash: '#view-navbar', name: 'navbar', title: 'Nav Bar', init: NavbarView }
 };

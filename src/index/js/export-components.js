@@ -7,6 +7,12 @@ import Navbar from '../../components/navbar/navbar';
 export default {
     intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intor' },
     button: { name: 'button', template: buttonTemplate, className: 'mf-btn', view: '#view-button' },
-    hero: { name: 'hero', template: heroTemplate, className: 'mf-hero', view: '#view-hero' },
+    hero: {
+        name: 'hero',
+        template: heroTemplate,
+        className: 'mf-hero',
+        view: '#view-hero',
+        stories: [ 'Default, centered content', 'Left-aligned content', 'Right-aligned content' ],
+    },
     navbar: { name: 'navbar', template: navbarTemplate, className: 'mf-navbar', view: '#view-navbar', init: Navbar },
 };
