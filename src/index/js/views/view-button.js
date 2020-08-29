@@ -11,9 +11,7 @@ class ButtonView {
         this.codeMap = [];
         
         this.setDomElements();
-        this.setCodeMap();
         this.render();
-        this.bindEvents();
     }
 
     setDomElements() {
@@ -21,36 +19,18 @@ class ButtonView {
         this.dom.components = this.dom.templateEl.querySelectorAll(`.${this.component.className}`);
     }
 
-    setCodeMap() {
-        this.dom.components.forEach(component => {
-            let stringHTML = component.outerHTML
-                .replace(/<svg\b.*<\/svg>/, '<svg>/* icon of your choice here */</svg>')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
-
-            this.codeMap.push({ html: stringHTML });
-        });
-    }
-
     render() {
         const wrap = document.createElement('div');
         this.dom.components.forEach((component, i) => {
             const story = document.createElement('div');
             story.className = 'view-section__component-story';
-            
-            const storyCode = `<code class="html">${this.codeMap[i].html}</code>`;
-            story.innerHTML = `${component.outerHTML}${storyCode}`;
-
+            story.append(component);
             wrap.append(story);
         });
         
         this.dom.viewEl.children[0].append(wrap);
 
         this.dom.components = wrap.querySelectorAll(`.${this.component.className}`);
-    }
-
-    bindEvents() {
-
     }
 }
 

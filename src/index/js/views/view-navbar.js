@@ -27,9 +27,9 @@ class NavbarView {
             const story = document.createElement('div');
             story.className = 'view-section__component-story';
             story.append(component);
-
             wrap.append(story);
         });
+        
         this.dom.viewEl.children[0].append(wrap);
     }
     

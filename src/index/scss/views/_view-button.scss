@@ -1,37 +1,10 @@
 #view-button {
-    // .mf-btn {
-    //     margin-bottom: 10px;
-    //     float: left;
-    //     clear: both;
-    // }
-    
     .view-section__component {
         padding-left: 30px;
         padding-right: 30px;
 
         &-story {
             margin-bottom: 20px;
-            float: left;
-            clear: both;
-        }
-
-        &:after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-
-        pre {
-
-            overflow-x: scroll;
-        }
-
-        code {
-            background: #dddddd;
-            padding: 10px 15px;
-            border-radius: 6px;
-            display: block;
-            margin-top: 5px;
         }
     }
 }
