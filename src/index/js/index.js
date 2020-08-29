@@ -126,3 +126,5 @@ class ComponentsIndex {
 window.componentsIndex = new ComponentsIndex();
 console.log(window.componentsIndex);
 window.parseDom = elementFromTemplate;
+
+// if (module.hot) module.hot.accept();

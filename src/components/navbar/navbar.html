@@ -1,1 +1,70 @@
-<div class="mf-navbar">This is Nav Bar</div>
+<!-- navbar basic -->
+<header class="mf-navbar">
+    <div class="mf-navbar__logo">
+        <a href="#">LOGO</a>
+    </div>
+ 
+    <div class="mf-navbar__menu">
+        <nav class="mf-navbar__links">
+            <a href="#" class="mf-navbar__link">Home</a>
+            <a href="#" class="mf-navbar__link">About</a>
+            <a href="#" class="mf-navbar__link">Services</a>
+            <a href="#" class="mf-navbar__link">Work</a>
+            <a href="#" class="mf-navbar__link">Contact</a>
+        </nav>
+        <button class="mf-navbar__mobile-toggle">
+            Menu
+        </button>
+    </div>
+</header>
+
+<!-- navbar with search, always visible search -->
+<header class="mf-navbar">
+   <div class="mf-navbar__logo">
+       <a href="#">LOGO</a>
+   </div>
+
+   <div class="mf-navbar__menu">
+        <nav class="mf-navbar__links">
+            <a href="#" class="mf-navbar__link">Home</a>
+            <a href="#" class="mf-navbar__link">About</a>
+            <a href="#" class="mf-navbar__link">Services</a>
+            <a href="#" class="mf-navbar__link">Work</a>
+            <a href="#" class="mf-navbar__link">Contact</a>
+        </nav>
+        <button class="mf-navbar__mobile-toggle">
+            Menu
+        </button>
+        <form action="/" class="mf-navbar__search">
+            <input type="search" class="mf-navbar__search-input" placeholder="Search...">
+            <button type="submit" class="mf-navbar__search-button">Search</button>
+        </form>
+   </div>
+</header>
+
+<!-- navbar with toggleable search -->
+<header class="mf-navbar">
+    <div class="mf-navbar__logo">
+        <a href="#">LOGO</a>
+    </div>
+ 
+    <div class="mf-navbar__menu">
+         <nav class="mf-navbar__links">
+             <a href="#" class="mf-navbar__link">Home</a>
+             <a href="#" class="mf-navbar__link">About</a>
+             <a href="#" class="mf-navbar__link">Services</a>
+             <a href="#" class="mf-navbar__link">Work</a>
+             <a href="#" class="mf-navbar__link">Contact</a>
+         </nav>
+         <button class="mf-navbar__mobile-toggle">
+             Menu
+         </button>
+         <form action="/" class="mf-navbar__search mf-navbar__search--toggleable">
+             <div class="mf-navbar__search-input-wrap">
+                 <input type="search" class="mf-navbar__search-input" placeholder="Search...">
+                 <button type="reset" class="mf-navbar__search-close">X</button>
+             </div>
+             <button type="submit" class="mf-navbar__search-button">Search</button>
+         </form>
+    </div>
+ </header>
