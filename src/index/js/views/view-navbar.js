@@ -23,10 +23,14 @@ class NavbarView {
     
     render() {
         const wrap = document.createElement('div');
-        this.dom.components.forEach(component => {
+        this.dom.components.forEach((component, i) => {
             const story = document.createElement('div');
             story.className = 'view-section__component-story';
-            story.append(component);
+
+            const title = document.createElement('h3');
+            title.innerText = this.component.stories[i];
+
+            story.append(title, component);
             wrap.append(story);
         });
         

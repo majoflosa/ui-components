@@ -1,6 +1,15 @@
 .view-section {
     &__component {
         min-height: 67vh;
+
+        &-story {
+            margin-bottom: 40px;
+
+            & > h3 {
+                margin: 0 0 5px 10px;
+                color: #777777;
+            }
+        }
     }
 }
 

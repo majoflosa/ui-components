@@ -4,10 +4,17 @@
     width: 250px;
     position: fixed;
     top: 0;
-    padding-top: 87px;
+    // padding-top: 87px;
     padding-bottom: 76px;
     height: 100vh;
     overflow: scroll;
+
+    .menu__site-links {
+        border-bottom: 1px solid #dddddd;
+        padding: 7px 0 6px;
+        background-color: #fafafa;
+        margin-bottom: 30px;
+    }
 
     a {
         display: block;

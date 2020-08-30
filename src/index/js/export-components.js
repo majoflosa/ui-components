@@ -5,8 +5,13 @@ import navbarTemplate from '../../components/navbar/navbar.html';
 import Navbar from '../../components/navbar/navbar';
 
 export default {
-    intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intor' },
-    button: { name: 'button', template: buttonTemplate, className: 'mf-btn', view: '#view-button' },
+    intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intro' },
+    button: {
+        name: 'button',
+        template: buttonTemplate,
+        className: 'mf-btn',
+        view: '#view-button',
+    },
     hero: {
         name: 'hero',
         template: heroTemplate,
@@ -14,5 +19,12 @@ export default {
         view: '#view-hero',
         stories: [ 'Default, centered content', 'Left-aligned content', 'Right-aligned content' ],
     },
-    navbar: { name: 'navbar', template: navbarTemplate, className: 'mf-navbar', view: '#view-navbar', init: Navbar },
+    navbar: {
+        name: 'navbar',
+        template: navbarTemplate,
+        className: 'mf-navbar',
+        view: '#view-navbar',
+        stories: [ 'Basic Nav Bar', 'Nav Bar with Search', 'Nav Bar with Toggle-able Search'],
+        init: Navbar
+    },
 };

@@ -51,7 +51,7 @@ class ComponentsIndex {
         this.dom.componentTitle = document.body.querySelector('#component-title');
         this.dom.openModal = document.body.querySelector('.header__open-modal');
 
-        this.dom.menu = document.body.querySelector('#menu');
+        this.dom.menu = document.body.querySelector('.menu__links');
         this.dom.menuLinks = this.dom.menu.querySelectorAll('a');
 
         this.dom.viewWrapper = document.body.querySelector('.view-wrapper');
