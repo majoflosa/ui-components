@@ -12,8 +12,16 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>UI Components: <span id="component-title">Index</span></h1>
+    <header class="header">
+        <h1 class="header__title">UI Components: <span id="component-title">Index</span></h1>
+        <div class="header__code-buttons">
+            <span class="header__code-label">See code: </span>
+            <button class="header__code-button" data-code="html">HTML</button>
+            <button class="header__code-button" data-code="css">CSS</button>
+            <button class="header__code-button" data-code="scss">SCSS</button>
+            <button class="header__code-button" data-code="sass">SASS</button>
+            <button class="header__code-button" data-code="js">JS</button>
+        </div>
     </header>
 
     <div class="content-wrap">
@@ -55,6 +63,15 @@
     <footer id="footer">
         By <a href="http://maurojflores.com" target="_blank">Mauricio J Flores</a>
     </footer>
+
+    <div class="code-modal">
+        <div class="code-modal__inner">
+            <div class="code-modal__content">
+                Loading code...
+            </div>
+            <button class="code-modal__close">Close</button>
+        </div>
+    </div>
 
     <script src="/script.js"></script>
 </body>

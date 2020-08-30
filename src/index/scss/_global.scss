@@ -1,11 +1,59 @@
 body {
     margin: 0;
+}
 
-    & > header > h1 {
-        margin: 0 0 20px 250px;
-        padding: 14px 30px;
-        border-bottom: 1px solid #dddddd;
-        background-color: #fafafa;
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dddddd;
+    background-color: #fafafa;
+    margin: 0 0 20px 250px;
+
+    &__title {
+        padding: 0 30px;
+    }
+
+    &__code-buttons {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+    }
+
+    &__code-label {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    &__code-button {
+        appearance: none;
+        background: #ffffff;
+        border: 1px solid #dddddd;
+        color: #777777;
+        padding: 12px 16px;
+        cursor: pointer;
+
+        & + & {
+            border-left: none;
+        }
+        
+        &:hover {
+            background-color: #f0f0f0;
+        }
+
+        &:first-child {
+            border-radius: 3px 0 0 3px;
+        }
+        &:last-child {
+            border-radius: 0 3px 3px 0;
+        }
+
+        &.selected, &:focus {
+            background-color: #777777;
+            border-color: #777777;
+            color: #ffffff;
+            outline: none;
+        }
     }
 }
 
@@ -21,5 +69,63 @@ body {
     a {
         font-weight: bold;
         color: inherit;
+    }
+}
+
+
+.code-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    display: none;
+
+    &.open {
+        display: flex;
+    }
+
+    &__inner {
+        position: relative;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 6px;
+        box-shadow: 0 0 5px 5px rgba(0,0,0,0.15);
+        width: 90%;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    &__content {
+        max-height: 85vh;
+        overflow: scroll;
+
+        code {
+            display: block;
+            border-radius: 6px;
+            margin: 10px 10px 0;
+            padding: 0 20px;
+            border: 1px solid #f0f0f0;
+
+            pre {
+                font-family: "Source Code Pro", monospace;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            // br + br:last-child {
+            //     display: none;
+            // }
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
     }
 }

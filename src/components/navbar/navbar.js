@@ -57,3 +57,10 @@ class Navbar {
 }
 
 export default Navbar;
+
+/**
+ * To initiate navbar:
+ * 
+ * const navbarEl = document.querySelector('.mf-navbar');
+ * const navbar = new Navbar(navbarEl);
+ */

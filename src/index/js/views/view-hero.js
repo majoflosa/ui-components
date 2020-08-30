@@ -11,9 +11,9 @@ class HeroView {
         this.instances = [];
         this.storiesHTML = [];
 
-        this.fetchCode();
+        // this.fetchCode();
         this.setDomElements();
-        // this.render();
+        this.render();
     }
 
     fetchCode() {
@@ -28,15 +28,13 @@ class HeroView {
                     const _story = `<!-- ${story}`;
                     this.storiesHTML.push(_story);
                 });
-                this.render();
+                // this.render();
             })
-            // .then(() => console.log(this.storiesHTML))
             .catch(err => console.log(err));
     }
 
     setDomElements() {
         this.dom.templateEl = elementFromTemplate(this.component.template);
-        console.log('this.dom.templateEl: ', this.dom.templateEl);
         this.dom.components = this.dom.templateEl.querySelectorAll(`.${this.component.className}`);
     }
 
@@ -49,18 +47,18 @@ class HeroView {
             const title = document.createElement('h3');
             title.innerText = this.component.stories[i];
             
-            const pre = document.createElement('pre');
-            pre.innerText = this.storiesHTML[i];
+            // const pre = document.createElement('pre');
+            // pre.innerText = this.storiesHTML[i];
             
-            const code = document.createElement('code');
-            code.className = 'html';
-            code.append(pre);
-            // console.log('code: ', code);
+            // const code = document.createElement('code');
+            // code.className = 'html';
+            // code.append(pre);
             
-            story.append(title, component, code);
+            // story.append(title, component, code);
+            story.append(title, component);
             wrap.append(story);
 
-            hljs.highlightBlock(story.querySelector('code'));
+            // hljs.highlightBlock(story.querySelector('code'));
         });
         this.dom.viewEl.children[0].append(wrap);
     }

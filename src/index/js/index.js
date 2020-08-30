@@ -2,6 +2,8 @@ import { elementFromTemplate } from '../../utils/dom';
 import components from './export-components';
 import views from './export-views';
 
+import hljs from 'highlight.js';
+
 import '../scss/style.scss';
 
 /**
@@ -18,6 +20,9 @@ class ComponentsIndex {
         // current view in state
         this.activeView = null;
         this.activeMenuLink = null;
+
+        // cache components code after fetching
+        this.code = {};
 
         // bind methods to instance context
         this.updateView = this.updateView.bind(this);
@@ -42,6 +47,12 @@ class ComponentsIndex {
         this.dom.viewWrapper = document.querySelector('.view-wrapper');
         this.dom.viewSections = this.dom.viewWrapper.querySelectorAll('.view-section');
         this.dom.viewNavLinks = this.dom.viewWrapper.nextElementSibling.querySelectorAll('a');
+        
+        this.dom.codeButtons = document.body.querySelector('.header__code-buttons');
+        
+        this.dom.modal = document.body.querySelector('.code-modal');
+        this.dom.modalContent = this.dom.modal.querySelector('.code-modal__content');
+        this.dom.modalClose = this.dom.modal.querySelector('.code-modal__close');
     }
 
     // bind events to respective dom elements
@@ -55,6 +66,65 @@ class ComponentsIndex {
             this.updateView(e, true);
             this.updateFooterNav();
         }));
+
+        this.dom.codeButtons.addEventListener('click', (e) => {
+            e.preventDefault();
+            const activeViewName = this.activeView.id.replace('view-', '');
+            if (activeViewName === 'intro') {
+                e.target.blur();
+                return false
+            };
+            
+            const code = e.target.dataset.code;
+            
+            if (this.code[activeViewName] && this.code[activeViewName][code]) {
+                this.dom.modalContent.innerHTML = '';
+                this.dom.modalContent.append(this.code[activeViewName][code]);
+                this.dom.modal.classList.add('open');
+                e.target.classList.add('selected');
+            } else {
+                this.dom.modalContent.classList.add('loading');
+                fetch(`/src/components/${activeViewName}/${activeViewName}.${code}`, { headers: { 'Content-Type': 'text/plain' } })
+                    .then(data => data.text())
+                    .then(text => {
+                        if (text.indexOf('Cannot GET') !== -1) {
+                            this.code[activeViewName] = this.code[activeViewName] || {};
+                            this.code[activeViewName][code] = null;
+
+                            e.target.blur();
+
+                            return false;
+                        }
+
+                        e.target.classList.add('selected');
+                        this.dom.modalContent.innerHTML = '';
+
+                        const codeEl = document.createElement('code');
+                        codeEl.className = code;
+                        const pre = document.createElement('pre');
+                        pre.innerText = text;
+    
+                        codeEl.append(pre);
+                        this.dom.modalContent.append(codeEl);
+                        this.dom.modalContent.classList.remove('loading');
+    
+                        this.code[activeViewName] = this.code[activeViewName] || {};
+                        this.code[activeViewName][code] = codeEl;
+                        this.dom.modal.classList.add('open');
+    
+                        hljs.highlightBlock(codeEl);
+                    })
+                    .catch(err => {
+                        console.log('fetch err: ', err);
+                        this.dom.modalContent.innerHTML = `No ${code} code available for this component`;
+                    });
+            }
+        });
+        this.dom.modalClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.dom.modal.classList.remove('open');
+            this.dom.codeButtons.querySelector('.selected').classList.remove('selected');
+        });
     }
 
     // update the view when 'route' changes; can be updated by nav links, updating url,
