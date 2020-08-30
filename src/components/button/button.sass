@@ -1,30 +1,120 @@
-.mf-hero 
-	background: #f0f0f0 
-	padding: 75px 50px 
-	display: flex 
-	align-items: center 
-	justify-content: center 
+/* overwrite these with theme colors
+$primary-color: blue !default
+$primary-color-hover: lighten(blue, 20%) !default
+$secondary-color: green !default
+$secondary-color-hover: lighten(green, 20%) !default
+$danger-color: red !default
+$danger-color-hover: lighten(red, 20%) !default
+$cancel-color: gray !default
+$cancel-color-hover: lighten(gray, 20%) !default
 
-	&--center
-        justify-content: center 
-    &--left 
-        justify-content: flex-start 
-    &--right
-        justify-content: flex-end 
-    &__content
-        width: 40% 
-        text-align: center
+$padding-sizes: (
+    "small": 4px 8px,
+    "medium": 8px 16px,
+    "large": 12px 20px
+)
 
-	.mf-hero--center & 
-        text-align: center 
-    .mf-hero--left & 
-		text-align: left 
-    .mf-hero--right & 
-		text-align: right 
+=button-base($color, $solid: true, $radius: 0)
+    box-sizing: border-box
+    border: 1px solid $color
+    border-radius: $radius
+    transition: all 0.25s ease-in-out
 
-	&__title 
-		margin-top: 0 
-    &__cta 
-	    margin-top: 30px 
-	    a
-            text-decoration: none 
+    @if $solid
+        background-color: $color
+        color: white
+
+        svg
+            fill: white
+    @else
+        background-color: transparent
+        color: $color
+
+        svg
+            fill: $color
+
+    &:hover, &:active
+        @if $solid
+            background-color: lighten($color, 20%)
+            border-color: lighten($color, 20%)
+        @else
+            background-color: $color
+            color: white
+
+            svg
+                fill: white
+
+    &:focus
+        outline: 0
+        box-shadow: 0 0 0 2px white, 0 0 0 4px lighten(blue, 30%)
+
+.mf-btn
+    appearance: none
+    background: none
+    color: inherit
+    font-size: inherit
+    font-family: inherit
+    padding: map-get($map: $padding-sizes, $key: "medium")
+    cursor: pointer
+
+    &--primary
+        +button-base($primary-color, true)
+
+    &--primary-border
+        +button-base($primary-color, false)
+
+    &--secondary
+        +button-base($secondary-color, true)
+
+    &--secondary-border
+        +button-base($secondary-color, false)
+
+    &--danger
+        +button-base($danger-color, true)
+
+    &--danger-border
+        +button-base($danger-color, false)
+
+    &--cancel
+        +button-base($cancel-color, true)
+
+    &--cancel-border
+        +button-base($cancel-color, false)
+
+    &--small
+        padding: map-get($map: $padding-sizes, $key: "small")
+        font-size: 0.9rem
+
+    &--medium
+        padding: map-get($map: $padding-sizes, $key: "medium")
+
+    &--large
+        padding: map-get($map: $padding-sizes, $key: "large")
+        font-size: 1.25rem
+
+    &--full-width
+        display: block
+        width: 100%
+        max-width: 100%
+        flex-basis: 100%
+        flex-grow: 1
+
+    &--round
+        border-radius: 9999px
+
+    &--icon-right, &--icon-left
+        span, svg
+        display: inline-block
+        vertical-align: baseline
+
+        svg
+            width: 0.9rem
+            height: 0.9rem
+
+    &--icon-right
+        svg
+            margin-left: 4px
+
+    &--icon-left
+        svg
+            margin-right: 4px

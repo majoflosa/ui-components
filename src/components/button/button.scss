@@ -15,6 +15,11 @@ $padding-sizes: (
 );
 
 @mixin button-base($color, $solid: true, $radius: 0) {
+    box-sizing: border-box;
+    border: 1px solid $color;
+    border-radius: $radius;
+    transition: all 0.25s ease-in-out;
+    
     @if $solid {
         background-color: $color;
         color: white;
@@ -30,11 +35,6 @@ $padding-sizes: (
             fill: $color;
         }
     }
-
-    box-sizing: border-box;
-    border: 1px solid $color;
-    border-radius: $radius;
-    transition: all 0.25s ease-in-out;
 
     &:hover, &:active {
         @if $solid {
