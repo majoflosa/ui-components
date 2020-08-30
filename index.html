@@ -15,12 +15,7 @@
     <header class="header">
         <h1 class="header__title">UI Components: <span id="component-title">Index</span></h1>
         <div class="header__code-buttons">
-            <span class="header__code-label">See code: </span>
-            <button class="header__code-button" data-code="html">HTML</button>
-            <button class="header__code-button" data-code="css">CSS</button>
-            <button class="header__code-button" data-code="scss">SCSS</button>
-            <button class="header__code-button" data-code="sass">SASS</button>
-            <button class="header__code-button" data-code="js">JS</button>
+            <button class="header__open-modal">&lt;/&gt; See Code</button>
         </div>
     </header>
 
@@ -66,10 +61,24 @@
 
     <div class="code-modal">
         <div class="code-modal__inner">
+
+            <div class="code-modal__header">
+                <h3 class="code-modal__title"></h3>
+                <div class="code-modal__buttons">
+                    <button class="code-modal__button" data-code="html">HTML</button>
+                    <button class="code-modal__button" data-code="css">CSS</button>
+                    <button class="code-modal__button" data-code="scss">SCSS</button>
+                    <button class="code-modal__button" data-code="sass">SASS</button>
+                    <button class="code-modal__button" data-code="js">JS</button>
+                </div>
+            </div>
+
             <div class="code-modal__content">
                 Loading code...
             </div>
+
             <button class="code-modal__close">Close</button>
+
         </div>
     </div>
 

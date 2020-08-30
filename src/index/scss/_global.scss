@@ -14,6 +14,26 @@ body {
         padding: 0 30px;
     }
 
+    &__open-modal {
+        appearance: none;
+        background: #777777;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        cursor: pointer;
+        border-radius: 4px;
+
+        &:disabled {
+            background: transparent;
+            color: #bbbbbb;
+            cursor: not-allowed;
+        }
+
+        &.hidden {
+            display: none;
+        }
+    }
+
     &__code-buttons {
         display: flex;
         align-items: center;
@@ -41,7 +61,7 @@ body {
             background-color: #f0f0f0;
         }
 
-        &:first-child {
+        &:first-of-type {
             border-radius: 3px 0 0 3px;
         }
         &:last-child {
@@ -99,15 +119,64 @@ body {
         max-width: 900px;
         margin: 0 auto;
     }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    &__button {
+        appearance: none;
+        background: #ffffff;
+        border: 1px solid #dddddd;
+        color: #777777;
+        padding: 12px 16px;
+        cursor: pointer;
+
+        & + & {
+            border-left: none;
+        }
+        
+        &:hover {
+            background-color: #f0f0f0;
+        }
+
+        &:first-of-type {
+            border-radius: 3px 0 0 3px;
+        }
+        &:last-child {
+            border-radius: 0 3px 3px 0;
+        }
+
+        &.selected, &:focus {
+            background-color: #777777;
+            border-color: #777777;
+            color: #ffffff;
+            outline: none;
+        }
+
+        &:disabled {
+            background-color: #f0f0f0;
+            color: #bbbbbb;
+            cursor: not-allowed;
+        }
+    }
     
     &__content {
-        max-height: 85vh;
+        max-height: 75vh;
         overflow: scroll;
 
         code {
             display: block;
             border-radius: 6px;
-            margin: 10px 10px 0;
+            margin: 10px 0 0;
             padding: 0 20px;
             border: 1px solid #f0f0f0;
 
@@ -116,16 +185,12 @@ body {
                 font-size: 14px;
                 line-height: 1.5;
             }
-
-            // br + br:last-child {
-            //     display: none;
-            // }
         }
     }
 
     &__close {
         position: absolute;
         top: 15px;
-        right: 15px;
+        right: 20px;
     }
 }

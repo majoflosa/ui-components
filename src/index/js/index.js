@@ -20,6 +20,7 @@ class ComponentsIndex {
         // current view in state
         this.activeView = null;
         this.activeMenuLink = null;
+        this.activeCode = null;
 
         // cache components code after fetching
         this.code = {};
@@ -27,6 +28,12 @@ class ComponentsIndex {
         // bind methods to instance context
         this.updateView = this.updateView.bind(this);
         this.updateFooterNav = this.updateFooterNav.bind(this);
+        this.onCodeButtonClick = this.onCodeButtonClick.bind(this);
+        this.onViewLinkClick = this.onViewLinkClick.bind(this);
+        this.onModalOpenClick = this.onModalOpenClick.bind(this);
+        this.onModalCloseClick = this.onModalCloseClick.bind(this);
+        this.updateModalCode = this.updateModalCode.bind(this);
+        this.loadComponentCode = this.loadComponentCode.bind(this);
 
         // initiate functionality
         this.setDomElements();
@@ -41,16 +48,19 @@ class ComponentsIndex {
 
     // store useful dom elements
     setDomElements() {
-        this.dom.componentTitle = document.getElementById('component-title');
-        this.dom.menu = document.getElementById('menu');
+        this.dom.componentTitle = document.body.querySelector('#component-title');
+        this.dom.openModal = document.body.querySelector('.header__open-modal');
+
+        this.dom.menu = document.body.querySelector('#menu');
         this.dom.menuLinks = this.dom.menu.querySelectorAll('a');
-        this.dom.viewWrapper = document.querySelector('.view-wrapper');
+
+        this.dom.viewWrapper = document.body.querySelector('.view-wrapper');
         this.dom.viewSections = this.dom.viewWrapper.querySelectorAll('.view-section');
         this.dom.viewNavLinks = this.dom.viewWrapper.nextElementSibling.querySelectorAll('a');
         
-        this.dom.codeButtons = document.body.querySelector('.header__code-buttons');
-        
         this.dom.modal = document.body.querySelector('.code-modal');
+        this.dom.modalTitle = this.dom.modal.querySelector('.code-modal__title');
+        this.dom.codeButtons = this.dom.modal.querySelector('.code-modal__buttons');
         this.dom.modalContent = this.dom.modal.querySelector('.code-modal__content');
         this.dom.modalClose = this.dom.modal.querySelector('.code-modal__close');
     }
@@ -58,73 +68,12 @@ class ComponentsIndex {
     // bind events to respective dom elements
     bindEvents() {
         window.addEventListener('hashchange', this.updateView);
-        this.dom.menuLinks.forEach(link => link.addEventListener('click', (e) => {
-            this.updateView(e, true);
-            this.updateFooterNav();
-        }));
-        this.dom.viewNavLinks.forEach(link => link.addEventListener('click', (e) => {
-            this.updateView(e, true);
-            this.updateFooterNav();
-        }));
+        this.dom.menuLinks.forEach(link => link.addEventListener('click', this.onViewLinkClick));
+        this.dom.viewNavLinks.forEach(link => link.addEventListener('click', this.onViewLinkClick));
 
-        this.dom.codeButtons.addEventListener('click', (e) => {
-            e.preventDefault();
-            const activeViewName = this.activeView.id.replace('view-', '');
-            if (activeViewName === 'intro') {
-                e.target.blur();
-                return false
-            };
-            
-            const code = e.target.dataset.code;
-            
-            if (this.code[activeViewName] && this.code[activeViewName][code]) {
-                this.dom.modalContent.innerHTML = '';
-                this.dom.modalContent.append(this.code[activeViewName][code]);
-                this.dom.modal.classList.add('open');
-                e.target.classList.add('selected');
-            } else {
-                this.dom.modalContent.classList.add('loading');
-                fetch(`/src/components/${activeViewName}/${activeViewName}.${code}`, { headers: { 'Content-Type': 'text/plain' } })
-                    .then(data => data.text())
-                    .then(text => {
-                        if (text.indexOf('Cannot GET') !== -1) {
-                            this.code[activeViewName] = this.code[activeViewName] || {};
-                            this.code[activeViewName][code] = null;
-
-                            e.target.blur();
-
-                            return false;
-                        }
-
-                        e.target.classList.add('selected');
-                        this.dom.modalContent.innerHTML = '';
-
-                        const codeEl = document.createElement('code');
-                        codeEl.className = code;
-                        const pre = document.createElement('pre');
-                        pre.innerText = text;
-    
-                        codeEl.append(pre);
-                        this.dom.modalContent.append(codeEl);
-                        this.dom.modalContent.classList.remove('loading');
-    
-                        this.code[activeViewName] = this.code[activeViewName] || {};
-                        this.code[activeViewName][code] = codeEl;
-                        this.dom.modal.classList.add('open');
-    
-                        hljs.highlightBlock(codeEl);
-                    })
-                    .catch(err => {
-                        console.log('fetch err: ', err);
-                        this.dom.modalContent.innerHTML = `No ${code} code available for this component`;
-                    });
-            }
-        });
-        this.dom.modalClose.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.dom.modal.classList.remove('open');
-            this.dom.codeButtons.querySelector('.selected').classList.remove('selected');
-        });
+        this.dom.openModal.addEventListener('click', this.onModalOpenClick);
+        this.dom.codeButtons.addEventListener('click', this.onCodeButtonClick);
+        this.dom.modalClose.addEventListener('click', this.onModalCloseClick);
     }
 
     // update the view when 'route' changes; can be updated by nav links, updating url,
@@ -159,11 +108,24 @@ class ComponentsIndex {
         // update title
         this.dom.componentTitle.innerText = this.activeMenuLink.innerText;
 
+        const component = this.views[view].name;
+        if (!this.components[component].init) {
+            this.dom.codeButtons.querySelector('[data-code="js"]')
+                .setAttribute('disabled', 'disabled');
+        } else {
+            this.dom.codeButtons.querySelector('[data-code="js"]')
+                .removeAttribute('disabled');
+        }
+
+        this.dom.openModal.toggleAttribute('disabled', view === '#view-intro');
+        this.dom.openModal.classList.toggle('hidden', view === '#view-intro');
+
         // sync window history to enable 'back' and 'forward' navigation
         if (isClickEvent) window.history.pushState({}, '', view);
         window.scrollTo(0, 0);
     }
 
+    // update next/prev bottom links href after view updates
     updateFooterNav() {
         const prevLink = this.dom.viewNavLinks[0];
         const nextLink = this.dom.viewNavLinks[1];
@@ -190,6 +152,128 @@ class ComponentsIndex {
             nextLink.classList.remove('hidden');
             nextLink.setAttribute('href', nextHref);
         }
+    }
+
+    /** = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+     * Event Handlers
+     * = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+    // invoked when any link that updates view is clicked;
+    // updates view and footer links
+    onViewLinkClick(e) {
+        this.updateView(e, true);
+        this.updateFooterNav();
+    }
+
+    // invoked when the 'See Code' button is clicked;
+    // loads HTML code and opens modal
+    onModalOpenClick(e) {
+        e.preventDefault();
+        
+        // use active view's component name as key in 'this.code' cache
+        const activeViewName = this.activeView.id.replace('view-', '');
+
+        // Intro is not a component, don't show code for intro
+        if (activeViewName === 'intro') {
+            e.target.blur();
+            return false;
+        };
+
+        if (!this.activeCode) this.activeCode = 'html';
+
+        this.updateModalCode(activeViewName, this.activeCode);
+    }
+
+    // invoked when modal close button is clicked;
+    // hides modal, removes selected state in code buttons
+    onModalCloseClick(e) {
+        e.preventDefault();
+        this.dom.modal.classList.remove('open');
+        this.dom.codeButtons.querySelector('.selected').classList.remove('selected');
+    }
+
+    // invoked when top code buttons are clicked;
+    // loads selected code, opens modal, adds selected state to code button
+    onCodeButtonClick(e) {
+        e.preventDefault();
+        
+        // use active view's component name as key in 'this.code' cache
+        const activeViewName = this.activeView.id.replace('view-', '');
+
+        // Intro is not a component, don't show code for intro
+        if (activeViewName === 'intro') {
+            e.target.blur();
+            return false;
+        };
+        
+        // language of code about to be displayed; one of 'html', 'css', 'scss', 'sass', or 'js'
+        // if js is already selected for a component that has no js, default to html
+        this.activeCode = e.target.dataset.code === 'js'
+            ? (this.components[activeViewName].init ? e.target.dataset.code : 'html')
+            : e.target.dataset.code;
+
+        this.updateModalCode(activeViewName, this.activeCode);
+    }
+
+    updateModalCode(component, language) {
+        if (language === 'js' && !this.components[component].init) language = 'html';
+
+        if (this.code[component] && this.code[component][language]) {
+            this.dom.modalTitle.innerText = `${this.activeMenuLink.innerText} - ${language.toUpperCase()}`;
+            this.dom.modalContent.innerHTML = '';
+            this.dom.modalContent.append(this.code[component][language]);
+        } else {
+            this.dom.modal.classList.add('loading');
+            
+            this.loadComponentCode(component, language).then(() => {
+                this.dom.modalTitle.innerText = `${this.activeMenuLink.innerText} - ${language.toUpperCase()}`;
+                this.dom.modalContent.innerHTML = '';
+                this.dom.modalContent.append(this.code[component][language]);
+                this.dom.modal.classList.remove('loading');
+            }).catch(err => {
+                console.log('err: ', err);
+                this.dom.modal.classList.remove('loading');
+            });
+        }
+
+        if (this.dom.codeButtons.querySelector('.selected'))
+            this.dom.codeButtons.querySelector('.selected').classList.remove('selected');
+
+        this.dom.codeButtons
+            .querySelector(`[data-code="${language}"]`)
+            .classList
+            .add('selected');
+
+        this.dom.modal.classList.add('open');
+    }
+
+    loadComponentCode(component, language) {
+        const headers = { 'Content-Type': 'text/plain' };
+
+        return fetch(`/src/components/${component}/${component}.${language}`, { headers })
+            .then(data => data.text())
+            .then(text => {
+                if (text.indexOf('Cannot GET') !== -1) {
+                    this.code[component] = this.code[component] || {};
+                    this.code[component][language] = null;
+
+                    e.target.blur();
+
+                    return false;
+                }
+
+                // create code element with preformatted content of loaded file
+                const pre = document.createElement('pre');
+                pre.innerText = text;
+                const codeEl = document.createElement('code');
+                codeEl.className = language; // language will match css class hljs needs for syntax highlight
+                codeEl.append(pre);
+
+                this.code[component] = this.code[component] || {};
+                this.code[component][language] = codeEl;
+
+                hljs.highlightBlock(codeEl);
+            });
     }
 }
 
