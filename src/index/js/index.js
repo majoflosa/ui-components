@@ -108,6 +108,7 @@ class ComponentsIndex {
         // update title
         this.dom.componentTitle.innerText = this.activeMenuLink.innerText;
 
+        // if component in current view has no js, disable its button
         const component = this.views[view].name;
         if (!this.components[component].init) {
             this.dom.codeButtons.querySelector('[data-code="js"]')
@@ -117,8 +118,16 @@ class ComponentsIndex {
                 .removeAttribute('disabled');
         }
 
+        // disable and hide 'See code' button on intro view
         this.dom.openModal.toggleAttribute('disabled', view === '#view-intro');
         this.dom.openModal.classList.toggle('hidden', view === '#view-intro');
+        // disable all component links, except in intro
+        if (view !== '#view-intro') {
+            this.activeView.querySelectorAll('a').forEach(link => {
+                console.log('disabling links?: ', link.href)
+                if (link.getAttribute('href') === '#') link.addEventListener('click', (e) => e.preventDefault());
+            });
+        }
 
         // sync window history to enable 'back' and 'forward' navigation
         if (isClickEvent) window.history.pushState({}, '', view);
