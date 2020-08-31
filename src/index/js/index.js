@@ -44,6 +44,8 @@ class ComponentsIndex {
         if (!window.location.hash) window.history.pushState({}, '', '#view-intro');
         // set initial href & style for bottom nav links
         this.updateFooterNav();
+
+        hljs.configure({ useBR: true });
     }
 
     // store useful dom elements
@@ -124,7 +126,6 @@ class ComponentsIndex {
         // disable all component links, except in intro
         if (view !== '#view-intro') {
             this.activeView.querySelectorAll('a').forEach(link => {
-                console.log('disabling links?: ', link.href)
                 if (link.getAttribute('href') === '#') link.addEventListener('click', (e) => e.preventDefault());
             });
         }

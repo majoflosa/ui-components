@@ -1,4 +1,6 @@
 import introTemplate from '../../components/intro/intro.html';
+import alertTemplate from '../../components/alert/alert.html';
+import Alert from '../../components/alert/alert';
 import buttonTemplate from '../../components/button/button.html';
 import heroTemplate from '../../components/hero/hero.html';
 import navbarTemplate from '../../components/navbar/navbar.html';
@@ -6,6 +8,14 @@ import Navbar from '../../components/navbar/navbar';
 
 export default {
     intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intro' },
+    alert: {
+        name: 'alert',
+        template: alertTemplate,
+        className: 'mf-alert',
+        view: '#view-alert',
+        stories: [ 'Default', 'Primary color', 'Secondary color', 'Danger color', 'Alert with header and message', 'Dismissable', 'Dismissable with content' ],
+        init: Alert,
+    },
     button: {
         name: 'button',
         template: buttonTemplate,
