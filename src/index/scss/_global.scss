@@ -8,7 +8,10 @@ body {
     justify-content: space-between;
     border-bottom: 1px solid #dddddd;
     background-color: #fafafa;
-    margin: 0 0 20px 250px;
+    margin: 0 0 20px 220px;
+    position: fixed;
+    width: calc(100% - 220px);
+    z-index: 1;
 
     &__title {
         padding: 0 30px;
