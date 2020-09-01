@@ -5,6 +5,8 @@ import buttonTemplate from '../../components/button/button.html';
 import heroTemplate from '../../components/hero/hero.html';
 import navbarTemplate from '../../components/navbar/navbar.html';
 import Navbar from '../../components/navbar/navbar';
+import accordionTemplate from '../../components/accordion/accordion.html';
+import Accordion from '../../components/accordion/accordion';
 
 export default {
     intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intro' },
@@ -37,4 +39,12 @@ export default {
         stories: [ 'Basic Nav Bar', 'Nav Bar with Search', 'Nav Bar with Toggle-able Search'],
         init: Navbar
     },
+    accordion: {
+        name: 'accordion',
+        template: accordionTemplate,
+        className: 'mf-accordion',
+        view: '#view-accordion',
+        stories: [ 'Single', 'Multiple, open single', 'Multiple, open multiple' ],
+        init: Accordion,
+    }
 };

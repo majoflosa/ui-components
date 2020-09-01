@@ -9,14 +9,14 @@ class IntroView {
         this.instances = [];
 
         this.setDomElements();
-        this.setViewContent();
+        this.render();
     }
 
     setDomElements() {
         this.dom.templateEl = elementFromTemplate(this.component.template);
     }
 
-    setViewContent() {
+    render() {
         this.dom.viewEl.children[0].append(this.dom.templateEl);
     }
 }

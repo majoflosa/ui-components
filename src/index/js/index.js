@@ -1,6 +1,7 @@
 import { elementFromTemplate } from '../../utils/dom';
 import components from './export-components';
 import views from './export-views';
+import ViewBase from './views/view-base';
 
 import hljs from 'highlight.js';
 
@@ -98,8 +99,9 @@ class ComponentsIndex {
         if (!this.activeView) return;
 
         // if the view behavior has not been initialized, initialize now
-        if (this.views[view] && this.views[view].init && !this.views[view].instance) {
-            this.views[view].instance = new this.views[view].init(view);
+        if (this.views[view] && !this.views[view].instance) {
+            // this.views[view].instance = new this.views[view].init(view);
+            this.views[view].instance = new ViewBase(view);
         }
 
         // add the active class view to make it display
