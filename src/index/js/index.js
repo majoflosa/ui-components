@@ -100,7 +100,6 @@ class ComponentsIndex {
 
         // if the view behavior has not been initialized, initialize now
         if (this.views[view] && !this.views[view].instance) {
-            // this.views[view].instance = new this.views[view].init(view);
             this.views[view].instance = new ViewBase(view);
         }
 

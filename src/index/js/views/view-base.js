@@ -21,14 +21,13 @@ class ViewBase {
 
     setDomElements() {
         this.dom.components = this.dom.templateEl.querySelectorAll(`.${this.component.className}`);
-        console.log('this.dom.components: ', this.dom.components);
     }
 
     render() {
         if (this.dom.components.length === 0) {
             return this.dom.viewEl.children[0].append(this.dom.templateEl);
         }
-        
+
         const wrap = document.createElement('div');
         this.dom.components.forEach((component, i) => {
             const story = document.createElement('div');
