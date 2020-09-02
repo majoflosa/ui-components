@@ -18,9 +18,9 @@ class Accordion {
     }
 
     setProperties() {
-        this.isSingle = this.dom.panelTrigger.length > 1;
+        this.isSingle = this.dom.panelTrigger.length === 1;
         this.isMultiple = !this.isSingle;
-        this.opensMultiple = this.dom.el.classList.contains('.mf-accordion--opens-multiple');
+        this.opensMultiple = this.isMultiple && this.dom.el.classList.contains('mf-accordion--opens-multiple');
         this.animationDuration = null;
     }
 
@@ -39,7 +39,15 @@ class Accordion {
         }
 
         this.togglePanel(panelBody, panelIsOpen);
-        panel.classList.toggle('open');
+
+        if (!this.opensMultiple && !panelIsOpen) {
+            [...panel.parentElement.children].forEach(sibling => {
+                if (sibling === panel) return;
+
+                const siblingBody = sibling.querySelector('.mf-accordion__panel-body');
+                this.togglePanel(siblingBody, true);
+            });
+        }
     }
     
     togglePanel(panelBody, panelIsOpen) {
@@ -48,6 +56,8 @@ class Accordion {
         } else {
             this.openPanel(panelBody);
         }
+
+        panelBody.parentElement.classList.toggle('open', !panelIsOpen);
     }
     
     openPanel(panelBody) {

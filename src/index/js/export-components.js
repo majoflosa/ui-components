@@ -44,7 +44,7 @@ export default {
         template: accordionTemplate,
         className: 'mf-accordion',
         view: '#view-accordion',
-        stories: [ 'Single', 'Multiple, open single', 'Multiple, open multiple' ],
+        stories: [ 'Single', 'Multiple, open single', 'Multiple, open multiple', 'Nested accordion' ],
         init: Accordion,
     }
 };

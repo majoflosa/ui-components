@@ -2,6 +2,10 @@
 $accordion-color: #f0f0f0;
 
 .mf-accordion {
+    & & {
+        margin: 20px 0;
+    }
+
     &__panel {
         border: 1px solid $accordion-color;
 

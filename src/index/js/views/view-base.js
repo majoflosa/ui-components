@@ -29,7 +29,7 @@ class ViewBase {
         }
 
         const wrap = document.createElement('div');
-        this.dom.components.forEach((component, i) => {
+        [...this.dom.templateEl.children].forEach((component, i) => {
             const story = document.createElement('div');
             story.className = 'view-section__component-story';
 
@@ -50,11 +50,12 @@ class ViewBase {
     }
 
     initComponents() {
-        this.dom.components.forEach(component => {
-            if (this.component.init) {
+        if (this.component.init) {
+            this.dom.components.forEach(component => {
+                if (!component.parentElement.matches('.view-section__component-story')) return;
                 this.instances.push(new this.component.init(component))
-            }
-        });
+            });
+        }
     }
 }
 
