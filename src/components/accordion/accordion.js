@@ -13,8 +13,12 @@ class Accordion {
     }
 
     setDomElements() {
-        this.dom.panelTrigger = this.dom.el.querySelectorAll('.mf-accordion__panel-trigger');
-        this.dom.panelBody = this.dom.el.querySelectorAll('.mf-accordion__panel-body');
+        this.dom.panelTrigger = [];
+        this.dom.panelBody = [];
+        [...this.dom.el.children].forEach(panel => {
+            this.dom.panelTrigger.push(panel.children[0].querySelector('.mf-accordion__panel-trigger'));
+            this.dom.panelBody.push(panel.children[1]);
+        });
     }
 
     setProperties() {
@@ -22,6 +26,7 @@ class Accordion {
         this.isMultiple = !this.isSingle;
         this.opensMultiple = this.isMultiple && this.dom.el.classList.contains('mf-accordion--opens-multiple');
         this.animationDuration = null;
+        this.isNested = this.dom.el.parentElement.matches('.mf-accordion__panel-contents');
     }
 
     bindEvents() {

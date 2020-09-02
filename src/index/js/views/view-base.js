@@ -52,7 +52,6 @@ class ViewBase {
     initComponents() {
         if (this.component.init) {
             this.dom.components.forEach(component => {
-                if (!component.parentElement.matches('.view-section__component-story')) return;
                 this.instances.push(new this.component.init(component))
             });
         }
