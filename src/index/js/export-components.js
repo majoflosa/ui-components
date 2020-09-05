@@ -7,6 +7,8 @@ import navbarTemplate from '../../components/navbar/navbar.html';
 import Navbar from '../../components/navbar/navbar';
 import accordionTemplate from '../../components/accordion/accordion.html';
 import Accordion from '../../components/accordion/accordion';
+import tabsTemplate from '../../components/tabs/tabs.html';
+import Tabs from '../../components/tabs/tabs';
 
 export default {
     intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intro' },
@@ -46,5 +48,13 @@ export default {
         view: '#view-accordion',
         stories: [ 'Single', 'Multiple, open single', 'Multiple, open multiple', 'Nested accordion' ],
         init: Accordion,
+    },
+    tabs: {
+        name: 'tabs',
+        template: tabsTemplate,
+        className: 'mf-tabs',
+        view: '#view-tabs',
+        stories: [ 'Basic', 'Vertical, left tabs', 'Vertical, right tabs' ],
+        init: Tabs,
     }
 };

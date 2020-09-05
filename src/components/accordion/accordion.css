@@ -1,0 +1,49 @@
+.mf-accordion .mf-accordion {
+    margin: 20px 0;
+}
+
+.mf-accordion__panel {
+    border: 1px solid #f0f0f0;
+}
+
+.mf-accordion__panel-header {
+    background-color: #f0f0f0;
+}
+
+.mf-accordion__panel-title {
+    margin: 0;
+}
+
+.mf-accordion__panel-trigger {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.mf-accordion__panel-body {
+    padding: 0 20px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.mf-accordion__panel-body:not([style]) {
+    height: 0;
+}
+
+.open > .mf-accordion__panel-body {
+    opacity: 1;
+    height: auto;
+}
+
+.mf-accordion__panel-contents {
+    overflow: hidden;
+}

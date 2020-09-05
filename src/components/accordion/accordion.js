@@ -2,7 +2,7 @@ class Accordion {
     constructor(el) {
         // this.dom will hold references to handy DOM elements related to this component;
         // constructor receives main component element as 'el'
-        this.dom = { el: el };
+        this.dom = { el };
 
         // bind event handlers' context for all elements to the current instance
         this.onPanelTriggerClick = this.onPanelTriggerClick.bind(this);
@@ -102,3 +102,12 @@ class Accordion {
 }
 
 export default Accordion;
+
+/**
+ * To initiate accordion component:
+ * 
+ * import Accordion from './path/to/accordion.js';
+ * 
+ * const accordionEl = document.querySelector('.mf-accordion');
+ * const accordion = new Accordion(accordionEl);
+ */
