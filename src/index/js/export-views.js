@@ -6,4 +6,5 @@ export default {
     '#view-navbar': { hash: '#view-navbar', name: 'navbar', title: 'Nav Bar' },
     '#view-accordion': { hash: '#view-accordion', name: 'accordion', title: 'Accordion' },
     '#view-tabs': { hash: '#view-tabs', name: 'tabs', title: 'Tabs' },
+    '#view-modal': { hash: '#view-modal', name: 'modal', title: 'Modal' },
 };

@@ -24,9 +24,8 @@ class ViewBase {
     }
 
     render() {
-        if (this.dom.components.length === 0) {
-            return this.dom.viewEl.children[0].append(this.dom.templateEl);
-        }
+        if (this.component.name === 'modal') return this.renderModal();
+        if (this.dom.components.length === 0) return this.dom.viewEl.children[0].append(this.dom.templateEl);
 
         const wrap = document.createElement('div');
         [...this.dom.templateEl.children].forEach((component, i) => {
@@ -55,6 +54,28 @@ class ViewBase {
                 this.instances.push(new this.component.init(component))
             });
         }
+    }
+
+    renderModal() {
+        const wrap = document.createElement('div');
+        let customInd = 0;
+        [...this.dom.templateEl.children].forEach(element => {
+            if (element.tagName === 'BUTTON') {
+                const story = document.createElement('div');
+                story.className = 'view-section__component-story';
+    
+                const title = document.createElement('h3');
+                title.innerText = this.component.stories[customInd];
+                story.append(title, element);
+
+                wrap.append(story);
+                customInd++;
+            } else {
+                document.body.append(element);
+            }
+        });
+
+        this.dom.viewEl.children[0].append(wrap);
     }
 }
 

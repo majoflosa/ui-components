@@ -9,6 +9,8 @@ import accordionTemplate from '../../components/accordion/accordion.html';
 import Accordion from '../../components/accordion/accordion';
 import tabsTemplate from '../../components/tabs/tabs.html';
 import Tabs from '../../components/tabs/tabs';
+import modalTemplate from '../../components/modal/modal.html';
+import Modal from '../../components/modal/modal';
 
 export default {
     intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intro' },
@@ -56,5 +58,13 @@ export default {
         view: '#view-tabs',
         stories: [ 'Basic', 'Vertical, left tabs', 'Vertical, right tabs' ],
         init: Tabs,
+    },
+    modal: {
+        name: 'modal',
+        template: modalTemplate,
+        className: 'mf-modal',
+        view: '#view-modal',
+        stories: [ 'Basic', 'Full-screen' ],
+        init: Modal,
     }
 };
