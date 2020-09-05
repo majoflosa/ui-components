@@ -1,5 +1,6 @@
 import { elementFromTemplate } from '../../../utils/dom';
 import components from '../export-components';
+import hljs from 'highlight.js';
 
 class ViewBase {
     constructor(hash) {
@@ -17,6 +18,8 @@ class ViewBase {
                 this.render();
                 this.initComponents();
             });
+
+        hljs.configure({ useBR: true });
     }
 
     setDomElements() {
@@ -44,6 +47,7 @@ class ViewBase {
         });
         
         this.dom.viewEl.children[0].append(wrap);
+        this.getComponentCode();
 
         this.dom.components = wrap.querySelectorAll(`.${this.component.className}`);
     }
@@ -76,6 +80,42 @@ class ViewBase {
         });
 
         this.dom.viewEl.children[0].append(wrap);
+        this.getComponentCode();
+    }
+
+    getComponentCode() {
+        fetch(`/src/components/${this.component.name}/${this.component.name}.html`)
+            .then(data => data.text())
+            .then(text => {
+                const componentTitle = document.getElementById('component-title').innerText;
+                const storiesCode = text.split(`<!-- ${componentTitle}:`).slice(1);
+                const storyElements = this.dom.viewEl.querySelectorAll('.view-section__component-story');
+
+                if (this.dom.components.length === 0) {
+                    const pre = document.createElement('pre');
+                    pre.innerText = `<!--${storyCode}`;
+
+                    const code = document.createElement('code');
+                    code.className = 'html';
+                    code.append(pre);
+
+                    return this.dom.viewEl.children[0].append(code);
+                }
+
+                storiesCode.forEach((storyCode, i) => {
+                    const pre = document.createElement('pre');
+                    pre.innerText = `<!--${storyCode}`;
+
+                    const code = document.createElement('code');
+                    code.className = 'html';
+                    code.append(pre);
+
+                    storyElements[i].append(code);
+
+                    hljs.highlightBlock(code);
+                });
+            })
+            .catch(err => console.log(err));
     }
 }
 
