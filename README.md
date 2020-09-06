@@ -6,6 +6,9 @@ Each component is a small collection of files - html, sass, css, and js on some 
 
 It is ongoing, and new components are added periodically, as well as code revisions for those previously added.
 
+## UX Components
+[Live demo - Index](http://ui.maurojflores.com/ui-components/)
+
 ## UX Features
 
 [Live demo - Index](http://ui.maurojflores.com/ui-features/)
