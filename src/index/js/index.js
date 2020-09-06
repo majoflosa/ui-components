@@ -261,7 +261,7 @@ class ComponentsIndex {
     loadComponentCode(component, language) {
         const headers = { 'Content-Type': 'text/plain' };
 
-        return fetch(`/src/components/${component}/${component}.${language}`, { headers })
+        return fetch(`./src/components/${component}/${component}.${language}`, { headers })
             .then(data => data.text())
             .then(text => {
                 if (text.indexOf('Cannot GET') !== -1) {

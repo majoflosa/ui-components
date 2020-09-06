@@ -84,7 +84,7 @@ class ViewBase {
     }
 
     getComponentCode() {
-        fetch(`/src/components/${this.component.name}/${this.component.name}.html`)
+        fetch(`./src/components/${this.component.name}/${this.component.name}.html`)
             .then(data => data.text())
             .then(text => {
                 const componentTitle = document.getElementById('component-title').innerText;
