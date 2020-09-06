@@ -6,35 +6,39 @@ Each component is a small collection of files - html, sass, css, and js on some 
 
 It is ongoing, and new components are added periodically, as well as code revisions for those previously added.
 
-* **Loading Animations** - [Live demo](http://ui.maurojflores.com/ui-components/loading-animations/loading-animations.html)
-* **Loading Screen** - [Live demo](http://ui.maurojflores.com/ui-components/loading-screen/loading-screen.html)
+## UX Features
 
-* **Animated Progress Ring** - [Live demo](http://ui.maurojflores.com/ui-components/progress-ring/progress-ring.html)
+[Live demo - Index](http://ui.maurojflores.com/ui-features/)
 
-* **Button effects** - [Live demo](http://ui.maurojflores.com/ui-components/button-effects/button-effects.html)
+* **Loading Animations** - [Live demo](http://ui.maurojflores.com/ui-features/loading-animations/loading-animations.html)
+* **Loading Screen** - [Live demo](http://ui.maurojflores.com/ui-features/loading-screen/loading-screen.html)
 
-* **Hero Banner** - [Live demo](http://ui.maurojflores.com/ui-components/banner/banner.html)
+* **Animated Progress Ring** - [Live demo](http://ui.maurojflores.com/ui-features/progress-ring/progress-ring.html)
 
-* **Basic Parallax** - [Live demo](http://ui.maurojflores.com/ui-components/basic-plx/basic-plx.html)
-* **Layered Parallax** - [Live demo](http://ui.maurojflores.com/ui-components/layered-plx/layered-plx.html)
-* **Multiple Parallax Sections** - [Live demo](http://ui.maurojflores.com/ui-components/multiple-plx/multiple-plx.html)
-* **Parallax on Mouse Movement** - [Live demo](http://ui.maurojflores.com/ui-components/hover-plx/hover-plx.html)
+* **Button effects** - [Live demo](http://ui.maurojflores.com/ui-features/button-effects/button-effects.html)
 
-* **Fade In Content on Scroll** - [Live demo](http://ui.maurojflores.com/ui-components/fade-in-onscroll/fade-in-onscroll.html)
-* **Successively Fade In Content on Scroll** - [Live demo](http://ui.maurojflores.com/ui-components/fade-in-onscroll-multiple/fade-in-onscroll-multiple.html)
+* **Hero Banner** - [Live demo](http://ui.maurojflores.com/ui-features/banner/banner.html)
 
-* **Page with Scrollspy Menu** - [Live demo](http://ui.maurojflores.com/ui-components/scrollspy/scrollspy.html)
+* **Basic Parallax** - [Live demo](http://ui.maurojflores.com/ui-features/basic-plx/basic-plx.html)
+* **Layered Parallax** - [Live demo](http://ui.maurojflores.com/ui-features/layered-plx/layered-plx.html)
+* **Multiple Parallax Sections** - [Live demo](http://ui.maurojflores.com/ui-features/multiple-plx/multiple-plx.html)
+* **Parallax on Mouse Movement** - [Live demo](http://ui.maurojflores.com/ui-features/hover-plx/hover-plx.html)
 
-* **Page with Sticky Navigation Bar** - [Live demo](http://ui.maurojflores.com/ui-components/sticky-nav/sticky-nav.html)
+* **Fade In Content on Scroll** - [Live demo](http://ui.maurojflores.com/ui-features/fade-in-onscroll/fade-in-onscroll.html)
+* **Successively Fade In Content on Scroll** - [Live demo](http://ui.maurojflores.com/ui-features/fade-in-onscroll-multiple/fade-in-onscroll-multiple.html)
 
-* **Slide-in Side Menu** - [Live demo](http://ui.maurojflores.com/ui-components/side-menu/side-menu.html)
+* **Page with Scrollspy Menu** - [Live demo](http://ui.maurojflores.com/ui-features/scrollspy/scrollspy.html)
 
-* **Carousel Gallery** - [Live demo](http://ui.maurojflores.com/ui-components/carousel-gallery/carousel-gallery.html)
-* **Infinite Carousel** - [Live demo](http://ui.maurojflores.com/ui-components/infinite-carousel/infinite-carousel.html)
+* **Page with Sticky Navigation Bar** - [Live demo](http://ui.maurojflores.com/ui-features/sticky-nav/sticky-nav.html)
 
-* **Tooltip** - [Live demo](http://ui.maurojflores.com/ui-components/tool-tips/tool-tips.html)
+* **Slide-in Side Menu** - [Live demo](http://ui.maurojflores.com/ui-features/side-menu/side-menu.html)
 
-* **Modal Box** - [Live demo](http://ui.maurojflores.com/ui-components/modal-box/modal-box.html)
+* **Carousel Gallery** - [Live demo](http://ui.maurojflores.com/ui-features/carousel-gallery/carousel-gallery.html)
+* **Infinite Carousel** - [Live demo](http://ui.maurojflores.com/ui-features/infinite-carousel/infinite-carousel.html)
 
-* **Form Validator** - [Live demo](http://ui.maurojflores.com/ui-components/form-validator/form-validator.html)
+* **Tooltip** - [Live demo](http://ui.maurojflores.com/ui-features/tool-tips/tool-tips.html)
+
+* **Modal Box** - [Live demo](http://ui.maurojflores.com/ui-features/modal-box/modal-box.html)
+
+* **Form Validator** - [Live demo](http://ui.maurojflores.com/ui-features/form-validator/form-validator.html)
 
