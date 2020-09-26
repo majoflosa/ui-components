@@ -1,10 +1,14 @@
 import { elementFromTemplate } from '../../../utils/dom';
 import components from '../export-components';
-import hljs from 'highlight.js';
+import hljs from 'highlight.js/lib/core';
+import xml from 'highlight.js/lib/languages/xml';
 
 class ViewBase {
     constructor(hash) {
         this.component = components[hash.replace('#view-', '')];
+        this.fetchUrlBase = window.location.origin.match('localhost')
+            ? window.location.origin
+            : `${window.location.origin}/ui-components`;
         
         this.dom = {
             viewEl: document.querySelector(hash),
@@ -19,6 +23,7 @@ class ViewBase {
                 this.initComponents();
             });
 
+        hljs.registerLanguage('xml', xml);
         hljs.configure({ useBR: true });
     }
 
@@ -84,7 +89,7 @@ class ViewBase {
     }
 
     getComponentCode() {
-        fetch(`${window.location.origin}/ui-components/src/components/${this.component.name}/${this.component.name}.html`)
+        fetch(`${this.fetchUrlBase}/src/components/${this.component.name}/${this.component.name}.html`)
             .then(data => data.text())
             .then(text => {
                 const componentTitle = document.getElementById('component-title').innerText;
