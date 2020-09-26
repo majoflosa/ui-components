@@ -21,7 +21,8 @@ class ViewBase {
             .then(() => {
                 this.render();
                 this.initComponents();
-            });
+            })
+            .catch((err) => console.log('error: ', err));
 
         hljs.registerLanguage('xml', xml);
         hljs.configure({ useBR: true });
