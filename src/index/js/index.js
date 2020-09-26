@@ -3,7 +3,12 @@ import components from './export-components';
 import views from './export-views';
 import ViewBase from './views/view-base';
 
-import hljs from 'highlight.js';
+import hljs from 'highlight.js/lib/core';
+import xml from 'highlight.js/lib/languages/xml';
+import css from 'highlight.js/lib/languages/css';
+import scss from 'highlight.js/lib/languages/scss';
+import sass from 'highlight.js/lib/languages/stylus';
+import js from 'highlight.js/lib/languages/javascript';
 
 import '../scss/style.scss';
 
@@ -26,6 +31,10 @@ class ComponentsIndex {
         // cache components code after fetching
         this.code = {};
 
+        this.fetchUrlBase = window.location.origin.match('localhost')
+            ? window.location.origin
+            : `${window.location.origin}/ui-components`;
+
         // bind methods to instance context
         this.updateView = this.updateView.bind(this);
         this.updateFooterNav = this.updateFooterNav.bind(this);
@@ -46,6 +55,11 @@ class ComponentsIndex {
         // set initial href & style for bottom nav links
         this.updateFooterNav();
 
+        hljs.registerLanguage('xml', xml);
+        hljs.registerLanguage('css', css);
+        hljs.registerLanguage('scss', scss);
+        hljs.registerLanguage('sass', sass);
+        hljs.registerLanguage('javascript', js);
         hljs.configure({ useBR: true });
     }
 
@@ -261,14 +275,15 @@ class ComponentsIndex {
     loadComponentCode(component, language) {
         const headers = { 'Content-Type': 'text/plain' };
 
-        return fetch(`/src/components/${component}/${component}.${language}`, { headers })
+        return fetch(`${this.fetchUrlBase}/src/components/${component}/${component}.${language}`, { headers })
             .then(data => data.text())
             .then(text => {
                 if (text.indexOf('Cannot GET') !== -1) {
                     this.code[component] = this.code[component] || {};
                     this.code[component][language] = null;
 
-                    e.target.blur();
+                    // e.target.blur();
+                    this.dom.codeButtons.forEach(button => button.blur());
 
                     return false;
                 }
