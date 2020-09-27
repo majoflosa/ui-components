@@ -16,6 +16,7 @@
         font-size: 0.8rem;
         font-size: 0.8em;
         box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+        transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
 
         &::after {
             border: 8px solid transparent;
@@ -38,7 +39,7 @@
             [data-tooltip-position="left"] & {
                 border-left: 8px solid #555555;
                 top: 50%;
-                left: 100%;// calc(100% + 16px);
+                left: 100%;
                 transform: translate(0, -50%);
             }
             [data-tooltip-position="right"] & {
@@ -53,6 +54,7 @@
         .open & {
             visibility: visible;
             opacity: 1;
+            transition: opacity 0.3s ease-in-out;
         }
     }
 }
