@@ -6,7 +6,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'assets'),
         filename: 'js/script.js',
-        publicPath: '/assets/',
+        publicPath: './assets/',
     },
     devtool: 'source-map',
     module: {
