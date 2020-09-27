@@ -1,0 +1,19 @@
+#view-intro {
+    .view-section__component {
+        li {
+            code {
+                display: block;
+                border-radius: 6px;
+                width: 90%;
+                max-width: 500px;
+                margin: 5px 0 10px;
+                padding: 3px 10px;
+                border: 1px solid #f0f0f0;
+                background-color: #f8f8f8;
+                color: #555555;
+                font-family: "Roboto Mono", sans-serif;
+                font-size: 0.9rem;
+            }
+        }
+    }
+}

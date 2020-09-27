@@ -131,6 +131,7 @@ class Tooltip {
         this.dom.el.classList.toggle('open', this.tooltipIsShowing);
     }
 
+    // invoked on any click; if tooltip is showing, hide it when clicking anywhere outside the tooltip
     onDocumentClick(e) {
         if (this.tooltipIsShowing && !this.dom.tooltip.contains(e.target) && e.target !== this.dom.tooltip) {
             this.tooltipIsShowing = false;
