@@ -7,4 +7,5 @@ export default {
     '#view-accordion': { hash: '#view-accordion', name: 'accordion', title: 'Accordion' },
     '#view-tabs': { hash: '#view-tabs', name: 'tabs', title: 'Tabs' },
     '#view-modal': { hash: '#view-modal', name: 'modal', title: 'Modal' },
+    '#view-tooltip': { hash: '#view-tooltip', name: 'tooltip', title: 'Tooltip' },
 };

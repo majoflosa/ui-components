@@ -11,6 +11,8 @@ import tabsTemplate from '../../components/tabs/tabs.html';
 import Tabs from '../../components/tabs/tabs';
 import modalTemplate from '../../components/modal/modal.html';
 import Modal from '../../components/modal/modal';
+import tooltipTemplate from '../../components/tooltip/tooltip.html';
+import Tooltip from '../../components/tooltip/tooltip';
 
 export default {
     intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intro' },
@@ -66,5 +68,13 @@ export default {
         view: '#view-modal',
         stories: [ 'Basic', 'Full-screen' ],
         init: Modal,
-    }
+    },
+    tooltip: {
+        name: 'tooltip',
+        template: tooltipTemplate,
+        className: 'mf-tooltip',
+        view: '#view-tooltip',
+        stories: [ 'Top', 'Bottom', 'Left', 'Right', 'Click' ],
+        init: Tooltip,
+    },
 };
