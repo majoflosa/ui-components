@@ -36,6 +36,11 @@
         flex-direction: row-reverse;
     }
 
+    /*
+     * Credit: Kevin Powell
+     * https://www.youtube.com/watch?v=J4fAqATYEr0&t=381s
+     */
+     
     /* base column size, from smallest screens to large */
     @for $i from 1 through 12 {
         .col-#{$i} {
