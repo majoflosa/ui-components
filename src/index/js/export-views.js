@@ -3,6 +3,7 @@ export default {
     '#view-alert': { hash: '#view-alert', name: 'alert', title: 'Alert' },
     '#view-button': { hash: '#view-button', name: 'button', title: 'Buttons' },
     '#view-hero': { hash: '#view-hero', name: 'hero', title: 'Hero', },
+    '#view-grid': { hash: '#view-grid', name: 'grid', title: 'Grid', },
     '#view-navbar': { hash: '#view-navbar', name: 'navbar', title: 'Nav Bar' },
     '#view-accordion': { hash: '#view-accordion', name: 'accordion', title: 'Accordion' },
     '#view-tabs': { hash: '#view-tabs', name: 'tabs', title: 'Tabs' },

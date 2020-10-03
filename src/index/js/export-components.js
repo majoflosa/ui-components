@@ -1,16 +1,26 @@
 import introTemplate from '../../components/intro/intro.html';
+
 import alertTemplate from '../../components/alert/alert.html';
 import Alert from '../../components/alert/alert';
+
 import buttonTemplate from '../../components/button/button.html';
+
 import heroTemplate from '../../components/hero/hero.html';
+
+import gridTemplate from '../../components/grid/grid.html';
+
 import navbarTemplate from '../../components/navbar/navbar.html';
 import Navbar from '../../components/navbar/navbar';
+
 import accordionTemplate from '../../components/accordion/accordion.html';
 import Accordion from '../../components/accordion/accordion';
+
 import tabsTemplate from '../../components/tabs/tabs.html';
 import Tabs from '../../components/tabs/tabs';
+
 import modalTemplate from '../../components/modal/modal.html';
 import Modal from '../../components/modal/modal';
+
 import tooltipTemplate from '../../components/tooltip/tooltip.html';
 import Tooltip from '../../components/tooltip/tooltip';
 
@@ -36,6 +46,13 @@ export default {
         className: 'mf-hero',
         view: '#view-hero',
         stories: [ 'Default, centered content', 'Left-aligned content', 'Right-aligned content' ],
+    },
+    grid: {
+        name: 'grid',
+        template: gridTemplate,
+        className: 'mf-grid',
+        view: '#view-grid',
+        stories: [ 'Default', 'With Gutters', 'Reverse' ],
     },
     navbar: {
         name: 'navbar',

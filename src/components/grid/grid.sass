@@ -1,0 +1,61 @@
+.mf-grid
+    box-sizing: border-box
+    display: flex
+    flex-wrap: wrap
+
+    &__cell
+        box-sizing: border-box
+        background: #dddddd
+        padding: 5px 10px
+        border: 1px solid #aaaaaa
+        text-align: center
+
+    &.mf-grid--gutter
+        /* overwrite this in your theme; the space between cells will be $gutter*2 */
+        $gutter: 4px
+
+        margin-left: $gutter * -1
+        margin-right: $gutter * -1
+
+        .mf-grid__cell
+            padding: 0 $gutter
+            border: none
+            background: none
+            margin-bottom: $gutter * 2
+
+            &-inner
+                padding: 5px 10px
+                background: #dddddd
+                border: 1px solid #aaaaaa
+
+    &.mf-grid--reverse
+        flex-direction: row-reverse
+
+    /* base column size, from smallest screens to large */
+    @for $i from 1 through 12
+        .col-#{$i}
+            flex: 0 0 (100% / 12 * $i)
+
+    /* large phones or landscape mode & small tablets */
+    @media screen and (min-width: 480px)
+        @for $i from 1 through 12
+            .phn-#{$i}
+                flex: 0 0 (100% / 12 * $i)
+
+    /* tablets */
+    @media screen and (min-width: 720px)
+        @for $i from 1 through 12
+            .tab-#{$i}
+                flex: 0 0 (100% / 12 * $i)
+
+    /* laptops & desktop */
+    @media screen and (min-width: 1024px)
+        @for $i from 1 through 12
+            .dsk-#{$i}
+                flex: 0 0 (100% / 12 * $i)
+
+    /* large screens */
+    @media screen and (min-width: 1392px)
+        @for $i from 1 through 12
+            .xlg-#{$i}
+                flex: 0 0 (100% / 12 * $i)
