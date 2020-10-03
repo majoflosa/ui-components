@@ -52,7 +52,7 @@ export default {
         template: gridTemplate,
         className: 'mf-grid',
         view: '#view-grid',
-        stories: [ 'Default', 'With Gutters' ],
+        stories: [ 'Default', 'With Gutters', 'Reverse' ],
     },
     navbar: {
         name: 'navbar',
