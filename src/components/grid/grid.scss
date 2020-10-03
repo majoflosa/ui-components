@@ -1,0 +1,71 @@
+.mf-grid {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__cell {
+        box-sizing: border-box;
+        background: #dddddd;
+        padding: 5px 10px;
+        border: 1px solid #aaaaaa;
+        text-align: center;
+
+        &.col-12 {
+            flex: 0 0 100%;
+        }
+        &.col-11 {
+            flex: 0 0 calc(100% / 12 * 11);
+        }
+        &.col-10 {
+            flex: 0 0 calc(100% / 12 * 10);
+        }
+        &.col-9 {
+            flex: 0 0 calc(100% / 12 * 9);
+        }
+        &.col-8 {
+            flex: 0 0 calc(100% / 12 * 8);
+        }
+        &.col-7 {
+            flex: 0 0 calc(100% / 12 * 7);
+        }
+        &.col-6 {
+            flex: 0 0 calc(100% / 12 * 6);
+        }
+        &.col-5 {
+            flex: 0 0 calc(100% / 12 * 5);
+        }
+        &.col-4 {
+            flex: 0 0 calc(100% / 12 * 4);
+        }
+        &.col-3 {
+            flex: 0 0 calc(100% / 12 * 3);
+        }
+        &.col-2 {
+            flex: 0 0 calc(100% / 12 * 2);
+        }
+        &.col-1 {
+            flex: 0 0 calc(100% / 12 * 1);
+        }
+    }
+
+    &.mf-grid--gutter {
+        /* overwrite this in your theme; the space between cells will be $gutter*2 */
+        $gutter: 4px;
+
+        margin-left: $gutter * -1;
+        margin-right: $gutter * -1;
+
+        .mf-grid__cell {
+            padding: 0 $gutter;
+            border: none;
+            background: none;
+            margin-bottom: $gutter * 2;
+
+            &-inner {
+                padding: 5px 10px;
+                background: #dddddd;
+                border: 1px solid #aaaaaa;
+            }
+        }
+    }
+}
