@@ -7,6 +7,11 @@ $input-border-color-error: $error-color !default;
 $input-border: 1px solid $input-border-color-default !default;
 $enable-color: blue !default;
 
+@mixin focus-outline() {
+    outline: 0;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px lighten(blue, 35%);
+}
+
 .mf-forms {
     &__text-input {
         appearance: none;
@@ -26,9 +31,8 @@ $enable-color: blue !default;
         transition: all 0.25s ease-in-out;
 
         &:focus {
-            outline: 0;
+            @include focus-outline();
             border-color: $input-border-color-focus;
-            box-shadow: 0 0 0 2px white, 0 0 0 4px lighten(blue, 30%);
         }
 
         .mf-forms__error & {
@@ -155,6 +159,10 @@ $enable-color: blue !default;
             background-color: $enable-color;
         }
 
+        .mf-forms__checkbox:focus + &:before {
+            @include focus-outline();
+        }
+
         &:after {
             content: "";
             width: 9px;
@@ -220,6 +228,9 @@ $enable-color: blue !default;
                 .mf-forms__checkbox:checked + .mf-forms__checkbox-toggle & {
                     background-color: $enable-color;
                 }
+                .mf-forms__checkbox:focus + .mf-forms__checkbox-toggle & {
+                    @include focus-outline();
+                }
             }
         }
     }
@@ -256,6 +267,9 @@ $enable-color: blue !default;
 
         .mf-forms__radio:checked + &:before {
             border-color: $enable-color;
+        }
+        .mf-forms__radio:focus + &:before {
+            @include focus-outline();
         }
 
         .mf-forms__radio:checked + &:after {
