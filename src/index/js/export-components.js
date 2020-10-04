@@ -9,6 +9,8 @@ import heroTemplate from '../../components/hero/hero.html';
 
 import gridTemplate from '../../components/grid/grid.html';
 
+import formsTemplate from '../../components/forms/forms.html';
+
 import navbarTemplate from '../../components/navbar/navbar.html';
 import Navbar from '../../components/navbar/navbar';
 
@@ -53,6 +55,13 @@ export default {
         className: 'mf-grid',
         view: '#view-grid',
         stories: [ 'Default', 'With Gutters', 'Reverse' ],
+    },
+    forms: {
+        name: 'forms',
+        template: formsTemplate,
+        className: 'mf-forms',
+        view: '#view-forms',
+        stories: [ 'Text Inputs', 'Text Inputs with Labels', 'Text Inputs with Labels, Inline', 'Text Inputs, required', 'Text Inputs, with error', 'Text Inputs, disabled', 'Select, native dropdown' ],
     },
     navbar: {
         name: 'navbar',

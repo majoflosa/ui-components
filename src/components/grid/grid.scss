@@ -36,6 +36,10 @@
         flex-direction: row-reverse;
     }
 
+    .col--grow {
+        flex-grow: 1 !important;
+    }
+
     /*
      * Credit: Kevin Powell
      * https://www.youtube.com/watch?v=J4fAqATYEr0&t=381s
@@ -45,6 +49,7 @@
     @for $i from 1 through 12 {
         .col-#{$i} {
             flex: 0 0 100% / 12 * $i;
+            max-width: 100% / 12 * $i;
         }
     }
 

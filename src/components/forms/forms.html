@@ -1,0 +1,68 @@
+<!-- Forms: Text Inputs -->
+<div class="mf-forms">
+    <input type="text" class="mf-forms__input mf-forms__text-input" placeholder="Text">
+    <input type="email" class="mf-forms__input mf-forms__text-input" placeholder="Email">
+    <input type="password" class="mf-forms__input mf-forms__text-input" placeholder="Password">
+    <input type="date" class="mf-forms__input mf-forms__text-input" placeholder="Date">
+    <input type="datetime-local" class="mf-forms__input mf-forms__text-input" placeholder="Datetime">
+    <input type="time" class="mf-forms__input mf-forms__text-input" placeholder="Time">
+    <input type="week" class="mf-forms__input mf-forms__text-input" placeholder="Week">
+    <input type="tel" class="mf-forms__input mf-forms__text-input" placeholder="Phone number">
+    <input type="url" class="mf-forms__input mf-forms__text-input" placeholder="URL">
+    <input type="number" class="mf-forms__input mf-forms__text-input" placeholder="5">
+    <input type="search" class="mf-forms__input mf-forms__text-input" placeholder="Search">
+    <textarea class="mf-forms__input mf-forms__textarea" rows="6" placeholder="Textarea"></textarea>
+</div>
+
+<!-- Forms: Text Inputs with Labels, stacked -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group">
+        <label class="mf-forms__label" for="">Text:</label>
+        <input type="text" class="mf-forms__input mf-forms__text-input">
+    </div>
+</div>
+
+<!-- Forms: Text Inputs with Labels, inline -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group mf-forms__input-group--inline">
+        <label class="mf-forms__label" for="">Text:</label>
+        <input type="text" class="mf-forms__input mf-forms__text-input">
+    </div>
+</div>
+
+<!-- Forms: Text Inputs, required -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group mf-forms__input-group--inline">
+        <label class="mf-forms__label" for="">Text <span class="mf-forms__required">*</span>:</label>
+        <input type="text" class="mf-forms__input mf-forms__text-input">
+    </div>
+</div>
+
+<!-- Forms: Text Inputs with error -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group mf-forms__error">
+        <input type="text" class="mf-forms__input mf-forms__text-input">
+        <p class="mf-forms__error-message">This field cannot be blank.</p>
+    </div>
+</div>
+
+<!-- Forms: Text Inputs, disabled -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group">
+        <input type="text" class="mf-forms__input mf-forms__text-input" value="Disabled with attribute" disabled>
+        <input type="text" class="mf-forms__input mf-forms__text-input mf-forms__text-input--disabled" value="Disabled, style only">
+    </div>
+</div>
+
+<!-- Forms: Select, native dropdown -->
+<div class="mf-forms">
+    <div class="mf-forms__select-wrap">
+        <select class="mf-forms__select">
+            <option value="">-- Select --</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+        </select>
+    </div>
+</div>
