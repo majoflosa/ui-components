@@ -1,6 +1,10 @@
 <!-- Modal: Basic, overlay (data-modal-id can be removed if there is only 1 modal in page) -->
 <button class="mf-modal-trigger" data-modal-id="1">Open Basic Modal</button>
-
+<!-- 
+    Note: main modal element should not necessarily be after the trigger button,
+    and may result in its size being limited by a parent element.
+    Placing it before the closing </body> tag can ensure it covers the whole window
+-->
 <div class="mf-modal" data-modal-id="1" data-layout="overlay">
     <div class="mf-modal__inner">
         <div class="mf-modal__content-wrap">

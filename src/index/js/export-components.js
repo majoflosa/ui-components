@@ -61,7 +61,7 @@ export default {
         template: formsTemplate,
         className: 'mf-forms',
         view: '#view-forms',
-        stories: [ 'Text Inputs', 'Text Inputs with Labels', 'Text Inputs with Labels, Inline', 'Text Inputs, required', 'Text Inputs, with error', 'Text Inputs, disabled', 'Select, native dropdown' ],
+        stories: [ 'Text Inputs', 'Text Inputs with Labels', 'Text Inputs with Labels, Inline', 'Text Inputs, required', 'Text Inputs, with error', 'Text Inputs, disabled', 'Select, native dropdown', 'Checkbox', 'Checkbox with label', 'Checkbox, as toggler switch', 'Radio', 'Radio, with label', 'Radio, as button group' ],
     },
     navbar: {
         name: 'navbar',
