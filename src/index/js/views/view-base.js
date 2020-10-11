@@ -29,12 +29,33 @@ class ViewBase {
     }
 
     setDomElements() {
-        this.dom.components = this.dom.templateEl.querySelectorAll(`.${this.component.className}`);
+        if (this.dom.templateEl.childElementCount === 1) {
+            this.dom.components = [this.dom.templateEl];
+        } else {
+            this.dom.components = this.dom.templateEl.querySelectorAll(`.${this.component.className}`);
+        }
+        // console.log('this.dom.templateEl: ', this.dom.templateEl);
+        // console.log('this.dom.components: ', this.dom.components);
     }
 
     render() {
         if (this.component.name === 'modal') return this.renderModal();
-        if (this.dom.components.length === 0) return this.dom.viewEl.children[0].append(this.dom.templateEl);
+        
+        if (this.dom.components.length === 1) {
+            const wrap = document.createElement('div');
+            const story = document.createElement('div');
+            story.className = 'view-section__component-story';
+            
+            const title = document.createElement('h3');
+            title.innerText = this.component.stories[0];
+            
+            story.append(title, this.dom.templateEl);
+            wrap.append(story);
+
+            // this.dom.viewEl.children[0].append(this.dom.templateEl);
+            this.dom.viewEl.children[0].append(wrap);
+            return this.getComponentCode();
+        }
 
         const wrap = document.createElement('div');
         [...this.dom.templateEl.children].forEach((component, i) => {
@@ -97,15 +118,16 @@ class ViewBase {
                 const storiesCode = text.split(`<!-- ${componentTitle}:`).slice(1);
                 const storyElements = this.dom.viewEl.querySelectorAll('.view-section__component-story');
 
-                if (this.dom.components.length === 0) {
+                if (this.dom.components.length === 1) {
                     const pre = document.createElement('pre');
-                    pre.innerText = `<!--${storyCode}`;
+                    pre.innerText = `<!--${storiesCode[0]}`;
 
                     const code = document.createElement('code');
                     code.className = 'html';
                     code.append(pre);
 
-                    return this.dom.viewEl.children[0].append(code);
+                    this.dom.viewEl.children[0].append(code);
+                    return hljs.highlightBlock(code);
                 }
 
                 storiesCode.forEach((storyCode, i) => {

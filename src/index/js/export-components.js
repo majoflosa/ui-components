@@ -26,6 +26,9 @@ import Modal from '../../components/modal/modal';
 import tooltipTemplate from '../../components/tooltip/tooltip.html';
 import Tooltip from '../../components/tooltip/tooltip';
 
+import loadingScreenTemplate from '../../components/loading-screen/loading-screen.html';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
+
 export default {
     intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intro' },
     alert: {
@@ -102,5 +105,13 @@ export default {
         view: '#view-tooltip',
         stories: [ 'Top', 'Bottom', 'Left', 'Right', 'Click' ],
         init: Tooltip,
+    },
+    'loading-screen': {
+        name: 'loading-screen',
+        template: loadingScreenTemplate,
+        className: 'mf-loading-screen',
+        view: '#view-loading-screen',
+        stories: [ 'Basic', 'With minimum display time' ],
+        init: LoadingScreen
     },
 };
