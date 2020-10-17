@@ -1,0 +1,29 @@
+.mf-loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    background-color: white;
+    color: #555555;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.mf-loading-screen__content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mf-loading-screen.loaded {
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.25s ease-in-out, height 0s linear 0.25s;
+    overflow: hidden;
+}
