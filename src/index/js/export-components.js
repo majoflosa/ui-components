@@ -9,6 +9,8 @@ import heroTemplate from '../../components/hero/hero.html';
 
 import gridTemplate from '../../components/grid/grid.html';
 
+import formsTemplate from '../../components/forms/forms.html';
+
 import navbarTemplate from '../../components/navbar/navbar.html';
 import Navbar from '../../components/navbar/navbar';
 
@@ -23,6 +25,9 @@ import Modal from '../../components/modal/modal';
 
 import tooltipTemplate from '../../components/tooltip/tooltip.html';
 import Tooltip from '../../components/tooltip/tooltip';
+
+import loadingScreenTemplate from '../../components/loading-screen/loading-screen.html';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
 
 export default {
     intro: { name: 'intro', template: introTemplate, className: 'mf-intro', view: '#view-intro' },
@@ -53,6 +58,13 @@ export default {
         className: 'mf-grid',
         view: '#view-grid',
         stories: [ 'Default', 'With Gutters', 'Reverse' ],
+    },
+    forms: {
+        name: 'forms',
+        template: formsTemplate,
+        className: 'mf-forms',
+        view: '#view-forms',
+        stories: [ 'Text Inputs', 'Text Inputs with Labels', 'Text Inputs with Labels, Inline', 'Text Inputs, required', 'Text Inputs, with error', 'Text Inputs, disabled', 'Select, native dropdown', 'Checkbox', 'Checkbox with label', 'Checkbox, as toggler switch', 'Radio', 'Radio, with label', 'Radio, as button group' ],
     },
     navbar: {
         name: 'navbar',
@@ -93,5 +105,13 @@ export default {
         view: '#view-tooltip',
         stories: [ 'Top', 'Bottom', 'Left', 'Right', 'Click' ],
         init: Tooltip,
+    },
+    'loading-screen': {
+        name: 'loading-screen',
+        template: loadingScreenTemplate,
+        className: 'mf-loading-screen',
+        view: '#view-loading-screen',
+        stories: [ 'Basic', 'With minimum display time' ],
+        init: LoadingScreen
     },
 };

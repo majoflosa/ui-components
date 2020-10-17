@@ -1,0 +1,333 @@
+/* Overwrite these in your theme */
+$input-border-color-default: #999999 !default;
+$input-border-color-focus: #555555 !default;
+$input-border-color-disabled: #bbbbbb !default;
+$error-color: red !default;
+$input-border-color-error: $error-color !default;
+$input-border: 1px solid $input-border-color-default !default;
+$enable-color: blue !default;
+
+@mixin focus-outline() {
+    outline: 0;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px lighten(blue, 35%);
+}
+
+.mf-forms {
+    &__text-input {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        font-family: inherit;
+        font-size: 1rem;
+        color: inherit;
+        line-height: 1rem;
+        display: inline-block;
+        padding: 0 14px;
+        margin: 4px 0;
+        border: $input-border;
+        height: calc(1rem + 16px);
+        border-radius: 2px;
+        box-sizing: border-box;
+        transition: all 0.25s ease-in-out;
+
+        &:focus {
+            @include focus-outline();
+            border-color: $input-border-color-focus;
+        }
+
+        .mf-forms__error & {
+            border-color: $input-border-color-error;
+        }
+
+        &--disabled, &[disabled="disabled"] {
+            border-color: $input-border-color-disabled;
+            background-color: #f5f5f5;
+            color: #999999;
+            cursor: not-allowed;
+        }
+
+        &::placeholder {
+            color: #aaaaaa;
+        }
+    }
+
+    &__textarea {
+        @extend .mf-forms__text-input;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        height: auto;
+        padding: 8px 14px;
+        overflow: initial;
+    }
+
+    &__input-group {
+        label, .mf-forms__label {
+            display: block;
+        }
+
+        .mf-forms__input {
+            display: block;
+        }
+
+        &--inline {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            label, .mf-forms__label {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    &__required {
+        color: $error-color;
+    }
+
+    &__error-message {
+        font-size: 0.9rem;
+        color: $error-color;
+        font-style: italic;
+        font-weight: bold;
+        margin-top: 4px;
+    }
+
+    &__select-wrap {
+        display: inline-block;
+        position: relative;
+
+        &:after {
+            content: "";
+            display: inline-block;
+            height: 6px;
+            width: 6px;
+            border: 2px solid #555555;
+            border-top: none;
+            border-right: none;
+            transform: rotate(-45deg);
+            position: absolute;
+            top: 14px;
+            right: 10px;
+        }
+    }
+
+    &__select {
+        @extend .mf-forms__text-input;
+        padding-right: 30px;
+        position: relative;
+        z-index: 1;
+        background: transparent;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    &__checkbox-wrap {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+    &__checkbox {
+        position: relative;
+        z-index: 1;
+        opacity: 0;
+        cursor: pointer;
+
+        .mf-forms__checkbox-wrap--toggler & {
+            position: absolute;
+        }
+    }
+
+    &__checkbox-icon {
+        &:before {
+            content: "";
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: $input-border;
+            border-width: 2px;
+            border-radius: 3px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .mf-forms__checkbox:checked + &:before {
+            border-color: $enable-color;
+            background-color: $enable-color;
+        }
+
+        .mf-forms__checkbox:focus + &:before {
+            @include focus-outline();
+        }
+
+        &:after {
+            content: "";
+            width: 9px;
+            height: 5px;
+            border: 2px solid white;
+            border-top: none;
+            border-right: none;
+            position: absolute;
+            top: 5px;
+            left: 4px;
+            transform: rotate(-50deg);
+        }
+    }
+
+    &__checkbox-label-text {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    &__checkbox-toggle {
+        &-off {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        &-on {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        &-switch {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+
+            &:before {
+                content: "";
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                margin-right: -16px;
+                border-radius: 99px;
+                background: white;
+                position: relative;
+                z-index: 1;
+                transition: all 0.25s ease-in-out;
+
+                .mf-forms__checkbox:checked + .mf-forms__checkbox-toggle & {
+                    transform: translate(16px, 0);
+                }
+            }
+
+            &:after {
+                content: "";
+                display: inline-block;
+                width: 36px;
+                height: 20px;
+                border-radius: 99px;
+                background: $input-border-color-disabled;
+                position: relative;
+                z-index: 0;
+                transition: all 0.25s ease-in-out;
+                
+                .mf-forms__checkbox:checked + .mf-forms__checkbox-toggle & {
+                    background-color: $enable-color;
+                }
+                .mf-forms__checkbox:focus + .mf-forms__checkbox-toggle & {
+                    @include focus-outline();
+                }
+            }
+        }
+    }
+
+    &__radio-wrap {
+        display: inline-flex;
+        min-height: 1.5rem;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+    &__radio {
+        position: relative;
+        z-index: 2;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    &__radio-icon {
+        &:before {
+            content: "";
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: $input-border;
+            border-width: 2px;
+            border-radius: 99px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+
+        .mf-forms__radio:checked + &:before {
+            border-color: $enable-color;
+        }
+        .mf-forms__radio:focus + &:before {
+            @include focus-outline();
+        }
+
+        .mf-forms__radio:checked + &:after {
+            content: "";
+            width: 9px;
+            height: 9px;
+            display: inline-block;
+            border: 5px solid white;
+            position: absolute;
+            background: $enable-color;
+            border-radius: 99px;
+            top: 0px;
+            left: 0px;
+            z-index: 0;
+        }
+    }
+
+    &__radio-label-text {
+        margin-left: 10px;
+        margin-top: -4px;
+        line-height: 1rem;
+    }
+
+    &__radio-buttons {
+        display: flex;
+        
+        &-option {
+            position: relative;
+
+            .mf-forms__radio {
+                position: absolute;
+            }
+        }
+
+        &-button {
+            display: inline-block;
+            border: $input-border;
+            margin-right: -1px;
+            line-height: 1rem;
+            padding: 10px 14px;
+            cursor: pointer;
+
+            .mf-forms__radio-buttons-option:first-of-type & {
+                border-radius: 3px 0 0 3px;
+            }
+            .mf-forms__radio-buttons-option:last-of-type & {
+                border-radius: 0 3px 3px 0;
+            }
+
+            &:hover, .mf-forms__radio:focus + & {
+                background-color: $input-border-color-disabled;
+            }
+
+            .mf-forms__radio:checked + & {
+                background-color: $enable-color;
+                border-color: $enable-color;
+                color: white;
+            }
+        }
+    }
+}

@@ -1,0 +1,146 @@
+<!-- Forms: Text Inputs -->
+<div class="mf-forms">
+    <!-- wrapping element can also be <form> instead of <div> -->
+    <input type="text" class="mf-forms__input mf-forms__text-input" placeholder="Text">
+    <input type="email" class="mf-forms__input mf-forms__text-input" placeholder="Email">
+    <input type="password" class="mf-forms__input mf-forms__text-input" placeholder="Password">
+    <input type="date" class="mf-forms__input mf-forms__text-input" placeholder="Date">
+    <input type="datetime-local" class="mf-forms__input mf-forms__text-input" placeholder="Datetime">
+    <input type="time" class="mf-forms__input mf-forms__text-input" placeholder="Time">
+    <input type="week" class="mf-forms__input mf-forms__text-input" placeholder="Week">
+    <input type="tel" class="mf-forms__input mf-forms__text-input" placeholder="Phone number">
+    <input type="url" class="mf-forms__input mf-forms__text-input" placeholder="URL">
+    <input type="number" class="mf-forms__input mf-forms__text-input" placeholder="5">
+    <input type="search" class="mf-forms__input mf-forms__text-input" placeholder="Search">
+    <textarea class="mf-forms__input mf-forms__textarea" rows="6" placeholder="Textarea"></textarea>
+</div>
+
+<!-- Forms: Text Inputs with Labels, stacked -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group">
+        <label class="mf-forms__label" for="">Text:</label>
+        <input type="text" class="mf-forms__input mf-forms__text-input">
+    </div>
+</div>
+
+<!-- Forms: Text Inputs with Labels, inline -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group mf-forms__input-group--inline">
+        <label class="mf-forms__label" for="">Text:</label>
+        <input type="text" class="mf-forms__input mf-forms__text-input">
+    </div>
+</div>
+
+<!-- Forms: Text Inputs, required -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group mf-forms__input-group--inline">
+        <label class="mf-forms__label" for="">Text <span class="mf-forms__required">*</span>:</label>
+        <input type="text" class="mf-forms__input mf-forms__text-input">
+    </div>
+</div>
+
+<!-- Forms: Text Inputs with error -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group mf-forms__error">
+        <input type="text" class="mf-forms__input mf-forms__text-input">
+        <p class="mf-forms__error-message">This field cannot be blank.</p>
+    </div>
+</div>
+
+<!-- Forms: Text Inputs, disabled -->
+<div class="mf-forms">
+    <div class="mf-forms__input-group">
+        <input type="text" class="mf-forms__input mf-forms__text-input" value="Disabled with attribute" disabled>
+        <input type="text" class="mf-forms__input mf-forms__text-input mf-forms__text-input--disabled" value="Disabled, style only">
+    </div>
+</div>
+
+<!-- Forms: Select, native dropdown -->
+<div class="mf-forms">
+    <div class="mf-forms__select-wrap">
+        <select class="mf-forms__select">
+            <option value="">-- Select --</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+        </select>
+    </div>
+</div>
+
+<!-- Forms: Checkbox -->
+<div class="mf-forms">
+    <label class="mf-forms__checkbox-wrap">
+        <input type="checkbox" class="mf-forms__input mf-forms__checkbox">
+        <span class="mf-forms__checkbox-icon"></span>
+    </label>
+</div>
+
+<!-- Forms: Checkbox with label -->
+<div class="mf-forms">
+    <label class="mf-forms__checkbox-wrap">
+        <input type="checkbox" class="mf-forms__input mf-forms__checkbox">
+        <span class="mf-forms__checkbox-icon"></span>
+        <span class="mf-forms__checkbox-label-text">Enable/Disable option</span>
+    </label>
+</div>
+
+<!-- Forms: Checkbox as toggler switch -->
+<div class="mf-forms">
+    <label class="mf-forms__checkbox-wrap mf-forms__checkbox-wrap--toggler">
+        <input type="checkbox" class="mf-forms__input mf-forms__checkbox">
+        <div class="mf-forms__checkbox-toggle">
+            <span class="mf-forms__checkbox-toggle-text mf-forms__checkbox-toggle-off">Off</span>
+            <span class="mf-forms__checkbox-toggle-switch"></span>
+            <span class="mf-forms__checkbox-toggle-text mf-forms__checkbox-toggle-on">On</span>
+        </div>
+    </label>
+</div>
+
+<!-- Forms: Radio -->
+<div class="mf-forms">
+    <label class="mf-forms__radio-wrap">
+        <input type="radio" class="mf-forms__input mf-forms__radio">
+        <span class="mf-forms__radio-icon"></span>
+    </label>
+</div>
+
+<!-- Forms: Radio with label -->
+<div class="mf-forms">
+    <div>
+        <label class="mf-forms__radio-wrap">
+            <input type="radio" name="radio" class="mf-forms__input mf-forms__radio">
+            <span class="mf-forms__radio-icon"></span>
+            <span class="mf-forms__radio-label-text">Option A</span>
+        </label>
+    </div>
+    <div>
+        <label class="mf-forms__radio-wrap">
+            <input type="radio" name="radio" class="mf-forms__input mf-forms__radio">
+            <span class="mf-forms__radio-icon"></span>
+            <span class="mf-forms__radio-label-text">Option B</span>
+        </label>
+    </div>
+</div>
+
+<!-- Forms: Radio, as a button group -->
+<div class="mf-forms">
+    <div class="mf-forms__radio-buttons">
+        <label for="option-a" class="mf-forms__radio-buttons-option">
+            <input type="radio" id="option-a" name="options" class="mf-forms__radio">
+            <span class="mf-forms__radio-buttons-button">Option A</span>
+        </label>
+        <label for="option-b" class="mf-forms__radio-buttons-option">
+            <input type="radio" id="option-b" name="options" class="mf-forms__radio">
+            <span class="mf-forms__radio-buttons-button">Option B</span>
+        </label>
+        <label for="option-c" class="mf-forms__radio-buttons-option">
+            <input type="radio" id="option-c" name="options" class="mf-forms__radio">
+            <span class="mf-forms__radio-buttons-button">Option C</span>
+        </label>
+        <label for="option-d" class="mf-forms__radio-buttons-option">
+            <input type="radio" id="option-d" name="options" class="mf-forms__radio">
+            <span class="mf-forms__radio-buttons-button">Option D</span>
+        </label>
+    </div>
+</div>

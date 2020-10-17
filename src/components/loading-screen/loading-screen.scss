@@ -1,0 +1,33 @@
+/* Overwrite these in your theme */
+$background-color: white !default;
+$contents-color: #555555 !default;
+
+.mf-loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    background-color: $background-color;
+    color: $contents-color;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+
+    &__content {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &.loaded {
+        opacity: 0;
+        height: 0;
+        transition: opacity 0.25s ease-in-out, height 0s linear 0.25s;
+        overflow: hidden;
+    }
+}
